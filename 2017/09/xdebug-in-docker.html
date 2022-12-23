@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>在Docker中使用Xdebug - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="我们经常会使用 PhpStorm 结合 Xdebug 进行代码断点调试，这样能追踪程序执行流程，方便调试代码和发现潜在问题。博主将开发环境迁入 Docker 后，Xdebug 调试遇到了些问题，在这里整理出 Docker 中使用 Xdebug 的方法和注意事项。">
@@ -46,12 +30,12 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="我们经常会使用 PhpStorm 结合 Xdebug 进行代码断点调试，这样能追踪程序执行流程，方便调试代码和发现潜在问题。博主将开发环境迁入 Docker 后，Xdebug 调试遇到了些问题，在这里整理出 Docker 中使用 Xdebug 的方法和注意事项。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2017-09-01T15:23:55.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:01.040Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.796Z">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -76,7 +60,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -136,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -307,7 +291,7 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接的源地址已经正确</span></span><br><span class="line"><span class="number">14</span>:<span class="number">05</span>:<span class="number">27.379783</span> IP <span class="number">172.17</span>.<span class="number">0.2</span>.<span class="number">44668</span> &gt; <span class="number">192.168</span>.<span class="number">1.101</span>.<span class="number">9001</span>: Flags [S], seq <span class="number">3444466556</span>, win <span class="number">29200</span>, options [mss <span class="number">1460</span>,sackOK,TS val <span class="number">1462749</span> ecr <span class="number">0</span>,nop,wscale <span class="number">7</span>], length <span class="number">0</span></span><br><span class="line">E..&lt;<span class="number">2</span>.@.@..........e.|<span class="comment">#).Nc|......r.nO.........</span></span><br><span class="line">..Q.........</span><br></pre></td></tr></table></figure>
 
 <p>再次使用 PhpStorm 的 REST Client 断点调试 API 时， Debug 控制台如下：</p>
-<p><img src="//img0.fanhaobai.com/2017/09/xdebug-in-docker/7f7c8948-5e61-4086-b52d-fa9ceab69d3b.png"></p>
+<p><img src="//www.fanhaobai.com/2017/09/xdebug-in-docker/7f7c8948-5e61-4086-b52d-fa9ceab69d3b.png"></p>
 <p>所以，使用 Xdebug 进行远程调试时，需要选择合适的调试模式，在 Docker 下建议使用远程模式 1。</p>
 <h2 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h2><ul>
 <li>Xdebug 版本和 PHP 版本一致</li>
@@ -316,7 +300,7 @@
 <ul>
 <li>本地文件和远端文件映射关系</li>
 </ul>
-<p><img src="//img1.fanhaobai.com/2017/09/xdebug-in-docker/cfe7ef04-4552-49c5-9ffb-6131f52afdb9.png"></p>
+<p><img src="//www.fanhaobai.com/2017/09/xdebug-in-docker/cfe7ef04-4552-49c5-9ffb-6131f52afdb9.png"></p>
 <p>如上图，在使用 PhpStorm 时进行远程调试时，需要配置本地文件和远端文件的目录映射关系，这样 IDE 才能根据 Xdebug 传递的当前执行文件路径与本地文件做匹配，实现断点调试和单步调试等。</p>
 
       
@@ -325,7 +309,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -575,23 +559,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,19 +567,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,7 +575,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,7 +619,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

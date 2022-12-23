@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>Elasticsearch检索实战 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="随着公司房源数据的急剧增多，现搜索引擎 Solr 的搜索效率和建立索引效率显著降低，而 Elasticsearch 是一个实时的分布式搜索和分析引擎，它是基于全文搜索引擎 Apache Lucene 之上，接入 Elasticsearch 是必然之选。本文是我学习使用 Elasticsearch 检索的笔记。">
@@ -46,12 +30,12 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="随着公司房源数据的急剧增多，现搜索引擎 Solr 的搜索效率和建立索引效率显著降低，而 Elasticsearch 是一个实时的分布式搜索和分析引擎，它是基于全文搜索引擎 Apache Lucene 之上，接入 Elasticsearch 是必然之选。本文是我学习使用 Elasticsearch 检索的笔记。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2017-08-09T15:38:30.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:01.000Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.674Z">
 <meta property="article:tag" content="Elasticsearch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -76,7 +60,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -136,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -248,7 +232,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>随着公司房源数据的急剧增多，现搜索引擎 Solr 的搜索效率和建立索引效率显著降低，而 <a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个实时的分布式搜索和分析引擎，它是基于全文搜索引擎 <a target="_blank" rel="noopener" href="https://lucene.apache.org/">Apache Lucene</a> 之上，接入 Elasticsearch 是必然之选。本文是我学习使用 Elasticsearch 检索的笔记。</p>
-<p><img src="//img5.fanhaobai.com/2017/08/elasticsearch-search/9a3accb9-0da1-47e4-ad58-428370464af6.jpg"><span id="more"></span></p>
+<p><img src="//www.fanhaobai.com/2017/08/elasticsearch-search/9a3accb9-0da1-47e4-ad58-428370464af6.jpg"><span id="more"></span></p>
 <p>Elasticsearch 支持 RESTful API 方式检索，查询结果以 JSON 格式响应，文中示例数据见 <a target="_blank" rel="noopener" href="http://es.fanhaobai.com/">这里</a>。有关 Elasticsearch 详细使用说明，见  <a target="_blank" rel="noopener" href="https://elasticsearch.cn/book/elasticsearch_definitive_guide_2.x/">官方文档</a>。</p>
 <h2 id="Url"><a href="#Url" class="headerlink" title="Url"></a>Url</h2><p>检索 url 中需包含 <strong>索引名</strong>，<code>_search</code>为查询关键字。例如 <a target="_blank" rel="noopener" href="http://es.fanhaobai.com/rooms/_search">http://es.fanhaobai.com/rooms/_search</a> 的 rooms 为索引名，此时表示无任何条件检索，检索结果为：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">GET /rooms/_search</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">&quot;took&quot;</span>: <span class="number">6</span>,</span><br><span class="line">   <span class="string">&quot;timed_out&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">   <span class="string">&quot;_shards&quot;</span>: &#123; ... &#125;,</span><br><span class="line">   <span class="string">&quot;hits&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;total&quot;</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="string">&quot;max_score&quot;</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;hits&quot;</span>: [</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="string">&quot;_index&quot;</span>: <span class="string">&quot;rooms&quot;</span>,</span><br><span class="line">            <span class="string">&quot;_type&quot;</span>: <span class="string">&quot;room_info&quot;</span>,</span><br><span class="line">            <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">            <span class="string">&quot;_score&quot;</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="string">&quot;_source&quot;</span>: &#123;</span><br><span class="line">               <span class="string">&quot;resblockId&quot;</span>: <span class="string">&quot;1111027377528&quot;</span>,</span><br><span class="line">               <span class="string">&quot;resblockName&quot;</span>: <span class="string">&quot;金隅丽港城&quot;</span>,</span><br><span class="line">               <span class="string">&quot;houseId&quot;</span>: <span class="number">1087599828743</span>,</span><br><span class="line">               <span class="string">&quot;cityCode&quot;</span>: <span class="number">110000</span>,</span><br><span class="line">               <span class="string">&quot;size&quot;</span>: <span class="number">10.5</span>,</span><br><span class="line">               <span class="string">&quot;bizcircleCode&quot;</span>: [ <span class="string">&quot;18335711&quot;</span> ],</span><br><span class="line">               <span class="string">&quot;bizcircleName&quot;</span>: [ <span class="string">&quot;望京&quot;</span> ],</span><br><span class="line">	       <span class="string">&quot;price&quot;</span>: <span class="number">2300</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            ... ...</span><br><span class="line">            <span class="string">&quot;_source&quot;</span>: &#123;</span><br><span class="line">               <span class="string">&quot;resblockId&quot;</span>: <span class="string">&quot;1111047349969&quot;</span>,</span><br><span class="line">               <span class="string">&quot;resblockName&quot;</span>: <span class="string">&quot;融泽嘉园&quot;</span>,</span><br><span class="line">               <span class="string">&quot;houseId&quot;</span>: <span class="number">1087817932553</span>,</span><br><span class="line">               <span class="string">&quot;cityCode&quot;</span>: <span class="number">110000</span>,</span><br><span class="line">               <span class="string">&quot;size&quot;</span>: <span class="number">10.35</span>,</span><br><span class="line">               <span class="string">&quot;bizcircleCode&quot;</span>: [ <span class="string">&quot;611100314&quot;</span> ],</span><br><span class="line">               <span class="string">&quot;bizcircleName&quot;</span>: [ <span class="string">&quot;西二旗&quot;</span> ],</span><br><span class="line">               <span class="string">&quot;price&quot;</span>: <span class="number">2500</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">	 ... ...</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -461,7 +445,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -711,23 +695,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,19 +703,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,7 +711,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,7 +755,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

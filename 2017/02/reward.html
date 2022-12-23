@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>PHP生成随机红包算法 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文：http:&#x2F;&#x2F;www.lcode.cc&#x2F;2016&#x2F;12&#x2F;24&#x2F;rand_ward.html  前一阵公司业务有一个生成红包的需求，分为固定红包和随机红包两种，固定红包没什么好说的了，随机红包要求指定最小值，和最大值，必须至少有一个最大值，可以没有最小值，但任何红包不能小于最小值。">
@@ -46,13 +30,13 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="原文：http:&#x2F;&#x2F;www.lcode.cc&#x2F;2016&#x2F;12&#x2F;24&#x2F;rand_ward.html  前一阵公司业务有一个生成红包的需求，分为固定红包和随机红包两种，固定红包没什么好说的了，随机红包要求指定最小值，和最大值，必须至少有一个最大值，可以没有最小值，但任何红包不能小于最小值。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2017-02-12T16:07:06.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:00.815Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.928Z">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -77,7 +61,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -137,7 +121,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -260,7 +244,7 @@
 <p>原文：<a target="_blank" rel="noopener" href="http://www.lcode.cc/2016/12/24/rand_ward.html">http://www.lcode.cc/2016/12/24/rand_ward.html</a></p>
 </blockquote>
 <p>前一阵公司业务有一个生成红包的需求，分为固定红包和随机红包两种，固定红包没什么好说的了，随机红包要求指定最小值，和最大值，必须至少有一个最大值，可以没有最小值，但任何红包不能小于最小值。</p>
-<p><img src="//img1.fanhaobai.com/2017/02/reward/p4GlWAFMrXts5zPMnA88Zsm_.png"><span id="more"></span></p>
+<p><img src="//www.fanhaobai.com/2017/02/reward/p4GlWAFMrXts5zPMnA88Zsm_.png"><span id="more"></span></p>
 <p>以前从来没做过这方面，有点懵B，于是去百度了一番，结果发现能找到的红包算法都有各种各样的 bug，要么会算出负值，要么超过最大值，所以决定自己撸一套出来。</p>
 <h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><p>在随机数生成方面，我借鉴了这位博主 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/hanyouchun/p/5074923.html">＠悲惨的大爷</a> 的思路：</p>
 <blockquote>
@@ -280,19 +264,19 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span>=<span class="number">0</span>; <span class="variable">$i</span>&lt;<span class="number">5</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$time_start</span> = microtime_float();</span><br><span class="line">    <span class="variable">$reward_arr</span> = <span class="variable">$create_reward</span>-&gt;random_red(<span class="variable">$total</span>, <span class="variable">$num</span>, <span class="variable">$max</span>, <span class="variable">$min</span>);</span><br><span class="line">    <span class="variable">$time_end</span> = microtime_float();</span><br><span class="line">    <span class="variable">$time</span>[] = <span class="variable">$time_end</span> - <span class="variable">$time_start</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> array_sum(<span class="variable">$time</span>)/<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">microtime_float</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">list</span>(<span class="variable">$usec</span>, <span class="variable">$sec</span>) = explode(<span class="string">&quot; &quot;</span>, microtime());</span><br><span class="line">    <span class="keyword">return</span> ((<span class="keyword">float</span>)<span class="variable">$usec</span> + (<span class="keyword">float</span>)<span class="variable">$sec</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="//img2.fanhaobai.com/2017/02/reward/Dd5AQhhljSVuOdmUAngQ0Zka.png"></p>
+<p><img src="//www.fanhaobai.com/2017/02/reward/Dd5AQhhljSVuOdmUAngQ0Zka.png"></p>
 <h2 id="数据检查"><a href="#数据检查" class="headerlink" title="数据检查"></a>数据检查</h2><p><strong>1） 数值是否有误</strong></p>
 <p>检测有没有负值，有没有最大值，最大值有多少个，有没有小于最小值的值。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$reward_arr</span> = <span class="variable">$create_reward</span>-&gt;random_red(<span class="variable">$total</span>, <span class="variable">$num</span>, <span class="variable">$max</span>, <span class="variable">$min</span>);</span><br><span class="line">sort(<span class="variable">$reward_arr</span>);<span class="comment">//正序，最小的在前面</span></span><br><span class="line"><span class="variable">$sum</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$min_count</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$max_count</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$reward_arr</span> <span class="keyword">as</span> <span class="variable">$i</span> =&gt; <span class="variable">$val</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$i</span>&lt;<span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br /&gt;第&quot;</span>.(<span class="variable">$i</span>+<span class="number">1</span>).<span class="string">&quot;个红包，金额为：&quot;</span>.<span class="variable">$val</span>.<span class="string">&quot;&lt;br /&gt;&quot;</span>;  </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$val</span> == <span class="variable">$max</span>) &#123;</span><br><span class="line">          <span class="variable">$max_count</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$val</span> &lt; <span class="variable">$min</span>) &#123;</span><br><span class="line">        <span class="variable">$min_count</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$val</span> = <span class="variable">$val</span>*<span class="number">100</span>;</span><br><span class="line">    <span class="variable">$sum</span> += <span class="variable">$val</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//检测钱是否全部发完</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;hr&gt;已生成红包总金额为：&#x27;</span>.(<span class="variable">$sum</span>/<span class="number">100</span>).<span class="string">&#x27;;总个数为：&#x27;</span>.count(<span class="variable">$reward_arr</span>).<span class="string">&#x27;&lt;hr&gt;&#x27;</span>;</span><br><span class="line"><span class="comment">//检测有没有小于0的值</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br /&gt;最大值:&quot;</span>.(<span class="variable">$val</span>/<span class="number">100</span>).<span class="string">&#x27;,共有&#x27;</span>.<span class="variable">$max_count</span>.<span class="string">&#x27;个最大值，共有&#x27;</span>.<span class="variable">$min_count</span>.<span class="string">&#x27;个值比最小值小&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="//img3.fanhaobai.com/2017/02/reward/JXPHry2Rdd_PuvEwsaZrFJTq.png"></p>
+<p><img src="//www.fanhaobai.com/2017/02/reward/JXPHry2Rdd_PuvEwsaZrFJTq.png"></p>
 <p><strong>2） 正态分布情况</strong></p>
 <p>注意，出图的时候，红包的数量不要给的太大，不然页面渲染不出来，会崩 。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$reward_arr</span> = <span class="variable">$create_reward</span>-&gt;random_red(<span class="variable">$total</span>, <span class="variable">$num</span>, <span class="variable">$max</span>, <span class="variable">$min</span>);</span><br><span class="line"><span class="variable">$show</span> = <span class="keyword">array</span>();</span><br><span class="line">rsort(<span class="variable">$reward_arr</span>);</span><br><span class="line"><span class="comment">//为了更直观的显示正态分布效果,需要将数组重新排序</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$reward_arr</span> <span class="keyword">as</span> <span class="variable">$k</span>=&gt;<span class="variable">$value</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$t</span>=<span class="variable">$k</span>%<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable">$t</span>) <span class="variable">$show</span>[]=<span class="variable">$value</span>;;</span><br><span class="line">    <span class="keyword">else</span> array_unshift(<span class="variable">$show</span>,<span class="variable">$value</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;设定最大值为:&quot;</span>.<span class="variable">$max</span>.<span class="string">&#x27;,最小值为:&#x27;</span>.<span class="variable">$min</span>.<span class="string">&#x27;&lt;hr /&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;table style=&#x27;font-size:12px;width:600px;border:1px solid #ccc;text-align:left;&#x27;&gt;&lt;tr&gt;&lt;td&gt;红包金额&lt;/td&gt;&lt;td&gt;图示&lt;/td&gt;&lt;/tr&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$show</span> <span class="keyword">as</span> <span class="variable">$val</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">#线条长度计算</span></span><br><span class="line">    <span class="variable">$width</span>=intval(<span class="variable">$num</span>*<span class="variable">$val</span>*<span class="number">300</span>/<span class="variable">$total</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;tr&gt;&lt;td&gt; <span class="subst">&#123;$val&#125;</span> &lt;/td&gt;&lt;td width=&#x27;500px;text-align:left;&#x27;&gt;&lt;hr style=&#x27;width:<span class="subst">&#123;$width&#125;</span>px;height:3px;border:none;border-top:3px double red;margin:0 auto 0 0px;&#x27;&gt;&lt;/td&gt;&lt;/tr&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/table&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="//img4.fanhaobai.com/2017/02/reward/p4GlWAFMrXts5zPMnA88Zsm_.png"></p>
+<p><img src="//www.fanhaobai.com/2017/02/reward/p4GlWAFMrXts5zPMnA88Zsm_.png"></p>
 <blockquote>
 <p><strong>PS</strong>：有朋友问我生成的数据有没有通过数学方法来验证其是否符合标准正态分布，因为我的数学不好，这个还真没算过，只是看着觉得像，就当他是了。既然遇到了这个问题，就一定要解决嘛，所以我就用 php 内置函数算了一下，算出来的结果在数据量小的时候还是比较接近正态分布的，但是数据量大起来的时候就不能看了，我整不太明白这个，大家感兴趣的可以找一下原因哟。 php 的四个函数：stats_standard_deviation（标准差），stats_variance（方差）， stats_kurtosis（(峰度），stats_skew（偏度）。使用上面的函数需要安装 <a href="(http://pecl.php.net/package/stats">stats</a> 扩展。</p>
 </blockquote>
@@ -304,7 +288,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -554,23 +538,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,19 +546,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,7 +554,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,7 +598,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

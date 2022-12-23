@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>异步、并发、协程原理 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文：http:&#x2F;&#x2F;wiki.phpboy.net&#x2F;doku.php?id&#x3D;2017-07:55-异步_并发_协程原理.md  Linux 操作系统在设计上将虚拟空间划分为用户空间和内核空间，两者做了隔离是相互独立的，用户空间给应用程序使用，内核空间给内核使用。">
@@ -46,12 +30,12 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="原文：http:&#x2F;&#x2F;wiki.phpboy.net&#x2F;doku.php?id&#x3D;2017-07:55-异步_并发_协程原理.md  Linux 操作系统在设计上将虚拟空间划分为用户空间和内核空间，两者做了隔离是相互独立的，用户空间给应用程序使用，内核空间给内核使用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2017-11-13T02:45:30.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:01.055Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.853Z">
 <meta property="article:tag" content="系统原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -76,7 +60,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -136,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -250,14 +234,14 @@
         <blockquote>
 <p>原文：<a target="_blank" rel="noopener" href="http://wiki.phpboy.net/doku.php?id=2017-07:55-%E5%BC%82%E6%AD%A5_%E5%B9%B6%E5%8F%91_%E5%8D%8F%E7%A8%8B%E5%8E%9F%E7%90%86.md">http://wiki.phpboy.net/doku.php?id=2017-07:55-异步_并发_协程原理.md</a></p>
 </blockquote>
-<p>Linux 操作系统在设计上将虚拟空间划分为用户空间和内核空间，两者做了隔离是相互独立的，用户空间给应用程序使用，内核空间给内核使用。<br><img src="//img3.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/a89c6e5b-facd-47a1-a26b-c8fb747e9650.jpg"><span id="more"></span></p>
+<p>Linux 操作系统在设计上将虚拟空间划分为用户空间和内核空间，两者做了隔离是相互独立的，用户空间给应用程序使用，内核空间给内核使用。<br><img src="//www.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/a89c6e5b-facd-47a1-a26b-c8fb747e9650.jpg"><span id="more"></span></p>
 <h2 id="一、异步"><a href="#一、异步" class="headerlink" title="一、异步"></a>一、异步</h2><h2 id="应用程序和内核"><a href="#应用程序和内核" class="headerlink" title="应用程序和内核"></a>应用程序和内核</h2><p>内核具有最高权限，可以访问受保护的内存空间，可以访问底层的硬件设备。而这些是应用程序所不具备的，但应用程序可以通过调用内核提供的接口来间接访问或操作。所谓的常见的 IO 模型就是基于应用程序和内核之间的交互所提出来的。以一次网络 IO 请求过程中的 read 操作为例，请求数据会先拷贝到系统内核的缓冲区（内核空间），再从操作系统的内核缓冲区拷贝到应用程序的地址空间（用户空间）。而从内核空间将数据拷贝到用户空间过程中，就会经历两个阶段： </p>
 <ul>
 <li>等待数据准备</li>
 <li>拷贝数据</li>
 </ul>
 <p>也正因为有了这两个阶段，才提出了各种网络 I/O 模型。</p>
-<h3 id="Unix-Linux的体系架构"><a href="#Unix-Linux的体系架构" class="headerlink" title="Unix/Linux的体系架构"></a>Unix/Linux的体系架构</h3><p><img src="//img4.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/88bb24ee-b443-407d-ad14-fdae5a7113d6.png"></p>
+<h3 id="Unix-Linux的体系架构"><a href="#Unix-Linux的体系架构" class="headerlink" title="Unix/Linux的体系架构"></a>Unix/Linux的体系架构</h3><p><img src="//www.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/88bb24ee-b443-407d-ad14-fdae5a7113d6.png"></p>
 <h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3><p>同步（Synchronised）和异步（Asynchronized）的概念描述的是应用程序与内核的交互方式，同步是指应用程序发起 I/O 请求后需要等待或者轮询内核 I/O 操作完成后才能继续执行；而异步是指应用程序发起 I/O 请求后仍继续执行，当内核 I/O 操作完成后会通知应用程序，或者调用应用程序注册的回调函数。</p>
 <h3 id="阻塞和非阻塞"><a href="#阻塞和非阻塞" class="headerlink" title="阻塞和非阻塞"></a>阻塞和非阻塞</h3><p>阻塞和非阻塞的概念描述的是应用程序调用内核 IO 操作的方式，阻塞是指 I/O 操作需要彻底完成后才返回到用户空间；而非阻塞是指 I/O 操作被调用后立即返回给用户一个状态值，无需等到 I/O 操作彻底完成。</p>
 <p><strong>常见的网络I/O模型大概有四种：</strong></p>
@@ -315,7 +299,7 @@
 <li>协程比线程更轻量级</li>
 </ul>
 <p>** 不同模型下用户空间与内核空间的关系：**</p>
-<p><img src="//img5.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/a89c6e5b-facd-47a1-a26b-c8fb747e9650.jpg"></p>
+<p><img src="//www.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/a89c6e5b-facd-47a1-a26b-c8fb747e9650.jpg"></p>
 <p>注：协程可以理解为上图中的用户级线程模型。</p>
 <h4 id="支持协程的语言"><a href="#支持协程的语言" class="headerlink" title="支持协程的语言"></a>支持协程的语言</h4><ul>
 <li> Simula</li>
@@ -380,7 +364,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -630,23 +614,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,19 +622,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,7 +630,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,7 +674,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

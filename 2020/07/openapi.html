@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>自建一个简易的OpenAPI网关 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="网关（API Gateway）是请求流量的唯一入口，可以适配各类渠道和业务，处理各种协议接入、路由与报文转换、同步异步调用等，来管理 API 接口和进行请求流量控制，在微服务架构中，网关尤为重要。">
@@ -46,12 +30,12 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="网关（API Gateway）是请求流量的唯一入口，可以适配各类渠道和业务，处理各种协议接入、路由与报文转换、同步异步调用等，来管理 API 接口和进行请求流量控制，在微服务架构中，网关尤为重要。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2020-07-15T11:30:00.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:01.216Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.707Z">
 <meta property="article:tag" content="系统设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -76,7 +60,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -136,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -252,7 +236,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>网关（API Gateway）是请求流量的唯一入口，可以适配各类渠道和业务，处理各种协议接入、路由与报文转换、同步异步调用等，来管理 API 接口和进行请求流量控制，在微服务架构中，网关尤为重要。</p>
-<p><img src="//img1.fanhaobai.com/2020/07/openapi/ffc6e25d-7044-467d-8b7c-910831249968.jpeg" alt="预览图"><span id="more"></span></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/ffc6e25d-7044-467d-8b7c-910831249968.jpeg" alt="预览图"><span id="more"></span></p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>当然，现在已有很多开源软件，如 <a target="_blank" rel="noopener" href="https://github.com/Kong/kong">Kong</a>、<a target="_blank" rel="noopener" href="https://gravitee.io/">Gravitee</a>、<a target="_blank" rel="noopener" href="https://github.com/Netflix/zuul">Zuul</a>。</p>
 <p>这些开源网关固然功能齐全，但对于我们业务来说，有点太重了，我们有部分定制化需求，为此我们自建了一个轻量级的 OpenAPI 网关，主要供第三方渠道对接使用。</p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h3><h4 id="接口鉴权"><a href="#接口鉴权" class="headerlink" title="接口鉴权"></a>接口鉴权</h4><ul>
@@ -271,7 +255,7 @@
 </ul>
 <h3 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h3><p>从第三方请求 API 链路来说，第三方渠道通过 HTTP 协议请求 OpenAPI 网关，网关再将请求转发到对应的内部服务端口，这些端口层通过 gRPC 调用请求到服务层，处理完请求后依次返回。</p>
 <p>从事件回调请求链路来说，服务层通过 HTTP 协议发起事件回调请求到 OpenAPI 网关，并立即返回成功。OpenAPI 网关异步完成第三方渠道事件回调请求。 </p>
-<p><img src="//img2.fanhaobai.com/2020/07/openapi/f227c462-b9b9-4846-aeae-23c579b05087.jpeg" alt="系统架构"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/f227c462-b9b9-4846-aeae-23c579b05087.jpeg" alt="系统架构"></p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="网关配置"><a href="#网关配置" class="headerlink" title="网关配置"></a>网关配置</h3><p>由于网关存在内部服务和第三方渠道配置，更为了实现配置的热更新，我们采用了 ETCD 存储配置，存储格式为 JSON。</p>
 <h4 id="配置分类"><a href="#配置分类" class="headerlink" title="配置分类"></a>配置分类</h4><p>配置分为以下 3 类：</p>
 <ul>
@@ -280,46 +264,46 @@
 <li>内部服务地址</li>
 </ul>
 <h4 id="配置结构"><a href="#配置结构" class="headerlink" title="配置结构"></a>配置结构</h4><p>a、第三方 AppId 配置</p>
-<p><img src="//img3.fanhaobai.com/2020/07/openapi/9655aec3-aa6c-4353-819e-a095a0fdd5bf.png" alt="AppId配置"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/9655aec3-aa6c-4353-819e-a095a0fdd5bf.png" alt="AppId配置"></p>
 <p>b、内部服务地址</p>
-<p><img src="//img4.fanhaobai.com/2020/07/openapi/48e89e9b-eede-4aec-b98f-ce50cc112c99.png" alt="内部服务地址"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/48e89e9b-eede-4aec-b98f-ce50cc112c99.png" alt="内部服务地址"></p>
 <p>c、内外 API 映射关系</p>
-<p><img src="//img5.fanhaobai.com/2020/07/openapi/676dcc84-628d-493c-8ab6-c9f2ec3053df.png" alt="API映射关系"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/676dcc84-628d-493c-8ab6-c9f2ec3053df.png" alt="API映射关系"></p>
 <h4 id="配置更新"><a href="#配置更新" class="headerlink" title="配置更新"></a>配置更新</h4><p>利用 ETCD 的 watch 监听，可以轻易实现配置的热更新。</p>
-<p><img src="//img0.fanhaobai.com/2020/07/openapi/549e72de-cdbd-4b8d-a238-085f226d7555.jpg" alt="配置热更新"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/549e72de-cdbd-4b8d-a238-085f226d7555.jpg" alt="配置热更新"></p>
 <p>当然也还是需要主动拉取配置的情况，如重启服务的时候。</p>
-<p><img src="//img1.fanhaobai.com/2020/07/openapi/ae062ec1-7f3c-4535-916b-c9cd08734a7d.jpg" alt="拉取热更新"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/ae062ec1-7f3c-4535-916b-c9cd08734a7d.jpg" alt="拉取热更新"></p>
 <h3 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h3><p>第三方调用 API 接口的时序，大致如下：</p>
-<p><img src="//img2.fanhaobai.com/2020/07/openapi/a4768e8e-f961-4270-ba9d-69d2a317d49b.png" alt="API调用时序"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/a4768e8e-f961-4270-ba9d-69d2a317d49b.png" alt="API调用时序"></p>
 <h4 id="参数格式"><a href="#参数格式" class="headerlink" title="参数格式"></a>参数格式</h4><p>为了简化对接流程，我们统一了 API 接口的请求参数格式。请求方式支持 POST 或者 GET。</p>
-<p><img src="//img3.fanhaobai.com/2020/07/openapi/d0131310-b7f8-4deb-aa9e-fcc6b28a47a2.png" alt="API调用时序"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/d0131310-b7f8-4deb-aa9e-fcc6b28a47a2.png" alt="API调用时序"></p>
 <h4 id="接口签名"><a href="#接口签名" class="headerlink" title="接口签名"></a>接口签名</h4><p>签名采用 md5 加密方式，算法可描述为：</p>
 <p>1、将参数 p、m、a、t、v、ak、secret 的值按顺序拼接，得到字符串；<br>2、md5 第 1 步的字符串并截取前 16 位， 得到新字符串；<br>3、将第 2 步的字符串转化为小写，即为签名；</p>
 <p>PHP 版的请求，如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$appId</span> = <span class="string">&#x27;app id&#x27;</span>;</span><br><span class="line"><span class="variable">$appSecret</span> = <span class="string">&#x27;app secret&#x27;</span>;</span><br><span class="line"><span class="variable">$api</span> = <span class="string">&#x27;api method&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 业务参数</span></span><br><span class="line"><span class="variable">$businessParams</span> = [</span><br><span class="line">  <span class="string">&#x27;orderId&#x27;</span> =&gt; <span class="string">&#x27;123123132&#x27;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="variable">$time</span> = time();</span><br><span class="line"><span class="variable">$params</span> = [</span><br><span class="line">  <span class="string">&#x27;p&#x27;</span>  =&gt; json_encode(<span class="variable">$businessParams</span>),</span><br><span class="line">  <span class="string">&#x27;m&#x27;</span>  =&gt; <span class="string">&#x27;inquiry&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;a&#x27;</span>  =&gt; <span class="variable">$api</span>,</span><br><span class="line">  <span class="string">&#x27;t&#x27;</span>  =&gt; <span class="variable">$time</span>,</span><br><span class="line">  <span class="string">&#x27;v&#x27;</span>  =&gt; <span class="number">1</span>,</span><br><span class="line">  <span class="string">&#x27;ak&#x27;</span> =&gt; <span class="variable">$appId</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="variable">$signStr</span> = implode(<span class="string">&#x27;&#x27;</span>, array_values(<span class="variable">$params</span>)) . <span class="variable">$appSecret</span>;</span><br><span class="line"><span class="variable">$sign</span> = strtolower(substr(md5(<span class="variable">$signStr</span>), <span class="number">0</span>, <span class="number">16</span>));</span><br><span class="line"></span><br><span class="line"><span class="variable">$params</span>[<span class="string">&#x27;s&#x27;</span>] = <span class="variable">$sign</span>;</span><br></pre></td></tr></table></figure>
 
 <h4 id="接口版本控制-1"><a href="#接口版本控制-1" class="headerlink" title="接口版本控制"></a>接口版本控制</h4><p>不同的接口版本，可以转发请求到不同的服务，或同一个服务的不同接口。</p>
-<p><img src="//img4.fanhaobai.com/2020/07/openapi/c6987388-682d-403f-8621-caa1fa6cd266.png" alt="接口版本控制"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/c6987388-682d-403f-8621-caa1fa6cd266.png" alt="接口版本控制"></p>
 <h3 id="事件回调-1"><a href="#事件回调-1" class="headerlink" title="事件回调"></a>事件回调</h3><p>通过事件回调机制，第三方可以订阅自己关注的事件。</p>
-<p><img src="//img5.fanhaobai.com/2020/07/openapi/4b6660db-0e0c-4c6d-9716-0e63820f45e1.png" alt="接口版本控制"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/4b6660db-0e0c-4c6d-9716-0e63820f45e1.png" alt="接口版本控制"></p>
 <h2 id="对接接入"><a href="#对接接入" class="headerlink" title="对接接入"></a>对接接入</h2><h3 id="渠道接入"><a href="#渠道接入" class="headerlink" title="渠道接入"></a>渠道接入</h3><p>只需要配置第三方 AppId 信息，包括 secret、回调地址、模块权限。</p>
-<p><img src="//img0.fanhaobai.com/2020/07/openapi/3321e082-1857-4c2b-8d19-a60334f9b4f5.png" alt="渠道AppId配置"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/3321e082-1857-4c2b-8d19-a60334f9b4f5.png" alt="渠道AppId配置"></p>
 <p>即，需要在 ETCD 执行如下操作：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ etcdctl <span class="built_in">set</span> /openapi/app/baidu <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Id&quot;: &quot;baidu&quot;,</span></span><br><span class="line"><span class="string">    &quot;Secret&quot;: &quot;00cf2dcbf8fb6e73bc8de50a8c64880f&quot;,</span></span><br><span class="line"><span class="string">    &quot;Modules&quot;: &#123;</span></span><br><span class="line"><span class="string">        &quot;inquiry&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;module&quot;: &quot;inquiry&quot;,</span></span><br><span class="line"><span class="string">            &quot;CallBack&quot;: &quot;http://www.baidu.com&quot;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="服务接入"><a href="#服务接入" class="headerlink" title="服务接入"></a>服务接入</h3><p>a、配置内部服务地址</p>
-<p><img src="//img1.fanhaobai.com/2020/07/openapi/1a902abb-fb35-42e1-9f3a-c18e12074f11.png" alt="配置内部服务地址"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/1a902abb-fb35-42e1-9f3a-c18e12074f11.png" alt="配置内部服务地址"></p>
 <p>即，需要在 ETCD 执行如下操作：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ etcdctl <span class="built_in">set</span> /openapi/backend/form_openapi <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;type&quot;: &quot;form&quot;,</span></span><br><span class="line"><span class="string">    &quot;Url&quot;: &quot;http://med-ih-openapi.app.svc.cluster.local&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>b、配置内外 API 映射关系</p>
-<p><img src="//img2.fanhaobai.com/2020/07/openapi/39befe95-381e-47ad-879d-e5433e778078.png" alt="配置内部服务地址"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/39befe95-381e-47ad-879d-e5433e778078.png" alt="配置内部服务地址"></p>
 <p>同样，需要在 ETCD 执行如下操作：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ etcdctl <span class="built_in">set</span> /openapi/api/inquiry/createMedicine.v2 <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Module&quot;: &quot;inquiry&quot;,</span></span><br><span class="line"><span class="string">    &quot;Method&quot;: &quot;createMedicine&quot;,</span></span><br><span class="line"><span class="string">    &quot;Backend&quot;: &quot;form_openapi&quot;,</span></span><br><span class="line"><span class="string">    &quot;ApiParams&quot;: &#123;</span></span><br><span class="line"><span class="string">        &quot;path&quot;: &quot;inquiry/medicine-clinic/create&quot;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>c、接入事件回调</p>
 <p>接入服务也需要按照第三方接入方式，并申请 AppId。回调业务参数约定为：</p>
-<p><img src="//img3.fanhaobai.com/2020/07/openapi/ba4a385e-add6-40fe-aa30-40866f8e4f40.png" alt="配置内部服务地址"></p>
+<p><img src="//www.fanhaobai.com/2020/07/openapi/ba4a385e-add6-40fe-aa30-40866f8e4f40.png" alt="配置内部服务地址"></p>
 <p>Golang 版本的接入，如下：</p>
 <figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	AppId = <span class="string">&quot;__inquiry&quot;</span></span><br><span class="line">	AppSecret = <span class="string">&quot;xxxxxxxxxx&quot;</span></span><br><span class="line">	Version = <span class="string">&quot;1&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> CallbackReq <span class="keyword">struct</span> &#123;</span><br><span class="line">	TargetAppId <span class="keyword">string</span>                 <span class="comment">//目标APP Id</span></span><br><span class="line">	Module      <span class="keyword">string</span>                 <span class="comment">//目标模块</span></span><br><span class="line">	Event       <span class="keyword">string</span>                 <span class="comment">//事件</span></span><br><span class="line">	Params      <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125; <span class="comment">//参数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generateData</span><span class="params">(req CallbackReq)</span> <span class="title">map</span>[<span class="title">string</span>]<span class="title">string</span></span> &#123;</span><br><span class="line">    params, _ := json.Marshal(req.Params)</span><br><span class="line">	p := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">		<span class="string">&quot;ak&quot;</span>: req.TargetAppId,</span><br><span class="line">		<span class="string">&quot;m&quot;</span>:  req.Module,</span><br><span class="line">		<span class="string">&quot;e&quot;</span>:  req.Event,</span><br><span class="line">		<span class="string">&quot;p&quot;</span>:  <span class="keyword">string</span>(params),</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	pStr, _ := json.Marshal(p)</span><br><span class="line">	postParams := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;p&quot;</span>:  <span class="keyword">string</span>(pStr),</span><br><span class="line">		<span class="string">&quot;m&quot;</span>:  <span class="string">&quot;callback&quot;</span>,</span><br><span class="line">		<span class="string">&quot;a&quot;</span>:  <span class="string">&quot;callback&quot;</span>,</span><br><span class="line">		<span class="string">&quot;t&quot;</span>:  fmt.Sprintf(<span class="string">&quot;%d&quot;</span>, time.Now().Unix()),</span><br><span class="line">		<span class="string">&quot;v&quot;</span>:  Version,</span><br><span class="line">		<span class="string">&quot;ak&quot;</span>: AppId,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	postParams[<span class="string">&quot;s&quot;</span>] = sign(getSignData(postParams) + AppSecret)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> postParams</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getSignData</span><span class="params">(params <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join([]<span class="keyword">string</span>&#123;params[<span class="string">&quot;p&quot;</span>], params[<span class="string">&quot;m&quot;</span>], params[<span class="string">&quot;a&quot;</span>], params[<span class="string">&quot;t&quot;</span>], params[<span class="string">&quot;v&quot;</span>], params[<span class="string">&quot;ak&quot;</span>]&#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sign</span><span class="params">(str <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.ToLower(utils.Md5(str)[<span class="number">0</span>:<span class="number">16</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -335,7 +319,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -585,23 +569,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +577,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,7 +585,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,7 +629,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

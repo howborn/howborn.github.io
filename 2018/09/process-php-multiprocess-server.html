@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>用PHP玩转进程之二 — 多进程PHPServer - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="经过 用 PHP 玩转进程之一 — 基础 的回顾复习，我们已经掌握了进程的基础知识，现在可以尝试用 PHP 做一些简单的进程控制和管理，来加深我们对进程的理解。接下来，我将用多进程模型实现一个简单的 PHPServer，基于它你可以做任何事。">
@@ -46,12 +30,12 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="经过 用 PHP 玩转进程之一 — 基础 的回顾复习，我们已经掌握了进程的基础知识，现在可以尝试用 PHP 做一些简单的进程控制和管理，来加深我们对进程的理解。接下来，我将用多进程模型实现一个简单的 PHPServer，基于它你可以做任何事。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2018-09-02T08:10:53.000Z">
-<meta property="article:modified_time" content="2021-04-28T13:05:01.153Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.834Z">
 <meta property="article:tag" content="系统设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -76,7 +60,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -136,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -252,10 +236,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>经过 <a href="https://www.fanhaobai.com/2018/08/process-php-basic-knowledge.html">用 PHP 玩转进程之一 — 基础</a> 的回顾复习，我们已经掌握了进程的基础知识，现在可以尝试用 PHP 做一些简单的进程控制和管理，来加深我们对进程的理解。接下来，我将用多进程模型实现一个简单的 PHPServer，基于它你可以做任何事。</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/34f35d33-57b2-41d7-b738-f0c1c712102f.png" alt="预览图"><span id="more"></span></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/34f35d33-57b2-41d7-b738-f0c1c712102f.png" alt="预览图"><span id="more"></span></p>
 <p>PHPServer 完整的源代码，可前往 <a target="_blank" rel="noopener" href="https://github.com/fan-haobai/php-server">fan-haobai/php-server</a> 获取。</p>
 <h2 id="总流程"><a href="#总流程" class="headerlink" title="总流程"></a>总流程</h2><p>该 PHPServer 的 Master 和 Worker 进程主要控制流程，如下图所示：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/e0e86073-3093-4e5f-be20-b64510e61575.png" alt="控制流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/e0e86073-3093-4e5f-be20-b64510e61575.png" alt="控制流程"></p>
 <p>其中，主要涉及 <strong>3 个对象</strong>，分别为 <a href="#">入口脚本</a>、<a href="#">Master 进程</a>、<a href="#">Worker 进程</a>。它们扮演的角色如下：</p>
 <ul>
 <li><a href="#">入口脚本</a>：主要实现 PHPServer 的启动、停止、重载功能，即触发 Master 进程<code>start</code>、<code>stop</code>、<code>reload</code>流程；</li>
@@ -274,7 +258,7 @@
 </blockquote>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>启动流程见 <a href="#%E6%80%BB%E6%B5%81%E7%A8%8B">流程 ①</a>，主要包括 <a href="#%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B">守护进程</a>、<a href="#%E4%BF%9D%E5%AD%98PID">保存 PID</a>、<a href="#%E6%B3%A8%E5%86%8C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%99%A8">注册信号处理器</a>、<a href="%E5%88%9B%E5%BB%BA%E5%A4%9A%E8%BF%9B%E7%A8%8BWorker">创建多进程 Worker</a> 这 4 部分。</p>
 <h4 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h4><p>首先，在入口脚本中<code>fork</code>一个子进程，然后该进程退出，并设置新的子进程为会话组长，此时的这个子进程就会脱离当前终端的控制。如下图所示：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/22ed9e46-971c-4983-8bf5-65d321585d42.png" alt="守护进程流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/22ed9e46-971c-4983-8bf5-65d321585d42.png" alt="守护进程流程"></p>
 <p>这里使用了 2 次<code>fork</code>，所以最后<code>fork</code>的一个子进程才是 Master 进程，其实一次<code>fork</code>也是可以的。代码如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">daemonize</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    umask(<span class="number">0</span>);</span><br><span class="line">    <span class="variable">$pid</span> = pcntl_fork();</span><br><span class="line">    <span class="keyword">if</span> (-<span class="number">1</span> === <span class="variable">$pid</span>) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="string">&quot;process fork fail\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (<span class="variable">$pid</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将当前进程提升为会话leader</span></span><br><span class="line">    <span class="keyword">if</span> (-<span class="number">1</span> === posix_setsid()) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="string">&quot;process setsid fail\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 再次fork以避免SVR4这种系统终端再一次获取到进程控制</span></span><br><span class="line">    <span class="variable">$pid</span> = pcntl_fork();</span><br><span class="line">    <span class="keyword">if</span> (-<span class="number">1</span> === <span class="variable">$pid</span>) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="string">&quot;process fork fail\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (<span class="number">0</span> !== <span class="variable">$pid</span>) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -296,13 +280,13 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">forkOneWorker</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$pid</span> = pcntl_fork();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 父进程</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$pid</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">static</span>::<span class="variable">$_workers</span>[] = <span class="variable">$pid</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">$pid</span> === <span class="number">0</span>) &#123; <span class="comment">// 子进程</span></span><br><span class="line">        <span class="built_in">static</span>::setProcessTitle(<span class="string">&#x27;PHPServer: worker&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 子进程会阻塞在这里</span></span><br><span class="line">        <span class="built_in">static</span>::run();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 子进程退出</span></span><br><span class="line">        <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="built_in">Exception</span>(<span class="string">&quot;fork one worker fail&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">forkWorkers</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(count(<span class="built_in">static</span>::<span class="variable">$_workers</span>) &lt; <span class="built_in">static</span>::<span class="variable">$workerCount</span>) &#123;</span><br><span class="line">        <span class="built_in">static</span>::forkOneWorker();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Worker进程的持续运行"><a href="#Worker进程的持续运行" class="headerlink" title="Worker进程的持续运行"></a>Worker进程的持续运行</h3><p>Worker 进程的持续运行，见 <a href="#%E6%80%BB%E6%B5%81%E7%A8%8B">流程 ③</a> 。其内部调度流程，如下图：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/ad804eb2-9300-4d34-ae63-3b820d81d4b1.png" alt="Worker进程的持续运行"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/ad804eb2-9300-4d34-ae63-3b820d81d4b1.png" alt="Worker进程的持续运行"></p>
 <p>对于 Worker 进程，<code>run()</code>方法主要执行具体业务逻辑，当然 Worker 进程会被阻塞于此。对于 <a href="#">任务 ①</a> 这里简单地使用<code>while</code>来模拟调度，实际中应该使用事件（Select 等）驱动。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 模拟调度,实际用event实现</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 捕获信号</span></span><br><span class="line">        pcntl_signal_dispatch();</span><br><span class="line"></span><br><span class="line">        call_user_func(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// do something</span></span><br><span class="line">            usleep(<span class="number">200</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中，<code>pcntl_signal_dispatch()</code>会在每次调度过程中，捕获信号并执行注册的信号处理器。</p>
 <h3 id="Master进程的持续监控"><a href="#Master进程的持续监控" class="headerlink" title="Master进程的持续监控"></a>Master进程的持续监控</h3><h4 id="调度流程"><a href="#调度流程" class="headerlink" title="调度流程"></a>调度流程</h4><p>Master 进程的持续监控，见 <a href="#%E6%80%BB%E6%B5%81%E7%A8%8B">流程 ②</a> 。其内部调度流程，如下图：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/8e65456f-8e08-4ae8-84f8-e6f2278410e4.png" alt="Master持续监控流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/8e65456f-8e08-4ae8-84f8-e6f2278410e4.png" alt="Master持续监控流程"></p>
 <p>对于 Master 进程的调度，这里也使用了<code>while</code>，但是引入了<code>wait</code>的系统调用，它会挂起当前进程，直到一个子进程退出或接收到一个信号。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">monitor</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 这两处捕获触发信号,很重要</span></span><br><span class="line">        pcntl_signal_dispatch();</span><br><span class="line">        <span class="comment">// 挂起当前进程的执行直到一个子进程退出或接收到一个信号</span></span><br><span class="line">        <span class="variable">$status</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="variable">$pid</span> = pcntl_wait(<span class="variable">$status</span>, WUNTRACED);</span><br><span class="line">        pcntl_signal_dispatch();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$pid</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// worker健康检查</span></span><br><span class="line">            <span class="built_in">static</span>::checkWorkerAlive();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 其他你想监控的</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -310,12 +294,12 @@
 </blockquote>
 <p>其中，PHPServer 的 <a href="#%E5%81%9C%E6%AD%A2">停止</a> 和 <a href="#%E9%87%8D%E8%BD%BD">重载</a> 操作是由信号触发，在信号处理器中完成具体操作；<a href="#Worker%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5">Worker 进程的健康检查</a> 会在每一次的调度过程中触发。</p>
 <h4 id="Worker进程的健康检查"><a href="#Worker进程的健康检查" class="headerlink" title="Worker进程的健康检查"></a>Worker进程的健康检查</h4><p>由于 Worker 进程执行繁重的业务逻辑，所以可能会异常崩溃。因此 Master 进程需要监控 Worker 进程健康状态，并尝试维持一定数量的 Worker 进程。健康检查流程，如下图：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/db333298-5a10-4de3-b0b2-41088cafc77f.png" alt="健康检查流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/db333298-5a10-4de3-b0b2-41088cafc77f.png" alt="健康检查流程"></p>
 <p>代码实现，如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkWorkerAlive</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$allWorkerPid</span> = <span class="built_in">static</span>::getAllWorkerPid();</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$allWorkerPid</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$pid</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">static</span>::isAlive(<span class="variable">$pid</span>)) &#123;</span><br><span class="line">            <span class="keyword">unset</span>(<span class="built_in">static</span>::<span class="variable">$_workers</span>[<span class="variable">$index</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">static</span>::forkWorkers();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><p>Master 进程的持续监控，见 <a href="#%E6%80%BB%E6%B5%81%E7%A8%8B">流程 ④</a> 。其详细流程，如下图：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/fc458e5f-fccc-477f-9e18-eada5d856289.png" alt="停止流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/fc458e5f-fccc-477f-9e18-eada5d856289.png" alt="停止流程"></p>
 <p>入口脚本给 Master 进程发送 SIGINT  信号，Master 进程捕获到该信号并执行 <a href="#%E6%B3%A8%E5%86%8C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%99%A8">信号处理器</a>，调用<code>stop()</code>方法。如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">stop</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 主进程给所有子进程发送退出信号</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">static</span>::<span class="variable">$_masterPid</span> === posix_getpid()) &#123;</span><br><span class="line">        <span class="built_in">static</span>::stopAllWorkers();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (is_file(<span class="built_in">static</span>::<span class="variable">$pidFile</span>)) &#123;</span><br><span class="line">            @unlink(<span class="built_in">static</span>::<span class="variable">$pidFile</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 子进程退出</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 退出前可以做一些事</span></span><br><span class="line">        <span class="keyword">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -324,7 +308,7 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">stopAllWorkers</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$allWorkerPid</span> = <span class="built_in">static</span>::getAllWorkerPid();</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$allWorkerPid</span> <span class="keyword">as</span> <span class="variable">$workerPid</span>) &#123;</span><br><span class="line">        posix_kill(<span class="variable">$workerPid</span>, SIGINT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 子进程退出异常,强制kill</span></span><br><span class="line">    usleep(<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">static</span>::isAlive(<span class="variable">$allWorkerPid</span>)) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$allWorkerPid</span> <span class="keyword">as</span> <span class="variable">$workerPid</span>) &#123;</span><br><span class="line">            <span class="built_in">static</span>::forceKill(<span class="variable">$workerPid</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清空worker实例</span></span><br><span class="line">    <span class="built_in">static</span>::<span class="variable">$_workers</span> = <span class="keyword">array</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><p>代码发布后，往往都需要进行重新加载。其实，重载过程只需要重启所有 Worker 进程即可。流程如下图：</p>
-<p><img src="//img0.fanhaobai.com/2018/09/process-php-multiprocess-server/4c5ec8d3-e56e-4367-8856-beaf23ee7602.png" alt="重载流程"></p>
+<p><img src="//www.fanhaobai.com/2018/09/process-php-multiprocess-server/4c5ec8d3-e56e-4367-8856-beaf23ee7602.png" alt="重载流程"></p>
 <p>整个过程共有 2 个流程，流程 ① 终止所有的 Worker 进程，流程 ② 为  <a href="#Worker%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5">Worker 进程的健康检查</a> 。其中流程 ① ，入口脚本给 Master 进程发送 SIGUSR1 信号，Master 进程捕获到该信号，执行信号处理器调用<code>reload()</code>方法，<code>reload()</code>方法调用<code>stopAllWorkers()</code>方法。如下：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">reload</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 停止所有worker即可,master会自动fork新worker</span></span><br><span class="line">    <span class="built_in">static</span>::stopAllWorkers();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -358,7 +342,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -608,23 +592,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,19 +600,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,7 +608,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,7 +652,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>

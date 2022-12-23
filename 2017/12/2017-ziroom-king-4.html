@@ -9,22 +9,6 @@
     
       <link rel="dns-prefetch" href="//www.fanhaobai.com">
     
-      <link rel="dns-prefetch" href="//img.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img0.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img1.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img2.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img3.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img4.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//img5.fanhaobai.com">
-    
-      <link rel="dns-prefetch" href="//disqus.fanhaobai.com">
-    
       <link rel="dns-prefetch" href="//cdn.bootcss.com">
     
       <link rel="dns-prefetch" href="//c.disquscdn.com">
@@ -36,7 +20,7 @@
       <link rel="dns-prefetch" href="//uploads.disquscdn.com">
     
   
-  <link rel="apple-touch-icon" href="//img0.fanhaobai.com/header.jpg">
+  <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
   <title>王者编程大赛之四 — 约瑟夫环 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="每年夏季自如都会组织夏季夏令营活动，给来京参加夏令营的小朋友准备好多礼物，今年也是如此。">
@@ -46,13 +30,13 @@
 <meta property="og:site_name" content="Howborn个人笔记">
 <meta property="og:description" content="每年夏季自如都会组织夏季夏令营活动，给来京参加夏令营的小朋友准备好多礼物，今年也是如此。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
 <meta property="article:published_time" content="2017-12-06T05:12:00.000Z">
-<meta property="article:modified_time" content="2022-06-02T02:11:46.147Z">
+<meta property="article:modified_time" content="2022-12-23T07:43:36.762Z">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img0.fanhaobai.com/header.jpg">
+<meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Howborn个人笔记" type="application/atom+xml">
   
@@ -77,7 +61,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="//img0.fanhaobai.com/header.jpg" class="js-avatar">
+			<img src="//www.fanhaobai.com/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -137,7 +121,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<a href="/"><img src="//img0.fanhaobai.com/header.jpg" class="js-avatar"></a>
+				<a href="/"><img src="//www.fanhaobai.com/header.jpg" class="js-avatar"></a>
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -253,13 +237,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>每年夏季自如都会组织夏季夏令营活动，给来京参加夏令营的小朋友准备好多礼物，今年也是如此。</p>
-<p><img src="//img1.fanhaobai.com/2017/12/2017-ziroom-king-4/3d9cf2e7-dfe6-4b6e-8526-991296c3ea51.png"><span id="more"></span></p>
+<p><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-4/3d9cf2e7-dfe6-4b6e-8526-991296c3ea51.png"><span id="more"></span></p>
 <p>组委会准备了一些小游戏来获得这些礼物，其中有一个游戏是这样的：组委会让小朋友围成一个圈。然后随机制定一个数 e，让编号为 0 的小朋友开始报数。每次喊道 e-1 的小朋友直接出列，淘达出局。从本次喊道 e-1 的下一个小朋友开始，继续从 0 报数…e-1 淘汰出局…一直这样进行…最后进行到最后一个小朋友，这位可以拿到”熊帅”亲笔签名的”木木”毛绒玩具。（注：小朋友的编号是从 0 到 n-1 )</p>
 <p>示例：<br>输入：n=1314 e=520<br>输出：796<br>输入：n=88888 e=1018<br>输出：69148</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>该题是一个 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%91%9F%E5%A4%AB%E6%96%AF%E9%97%AE%E9%A2%98">约瑟夫环</a> 问题（猴子选大王），这里运用数学知识找出递推关系式。</p>
 <p>假设，总共有 n 个人，数到 k（n &gt;= k）的人被杀掉，幸存者的位置为 $p_n$（为了便于理解，编号从 1 开始）。</p>
 <p>易知，初始位置为 k 的人会被第一个杀掉。此时，经过重新排序之后，问题变成了 n-1 个人的情形。幸存者的位置为 $p_{n-1}$。如果能够找到从 $p_{n}$ 到 $p_{n-1}$ 的递推关系，那么问题就解决了。</p>
-<p><img src="//img2.fanhaobai.com/2017/12/2017-ziroom-king-4/3d9cf2e7-dfe6-4b6e-8526-991296c3ea51.png"></p>
+<p><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-4/3d9cf2e7-dfe6-4b6e-8526-991296c3ea51.png"></p>
 <p>重新编号后，上一轮相对这一轮每个人位置关系映射为：</p>
 <p>1 -&gt; n-k+1<br>2 -&gt; n-k+2<br>…<br>k-1 -&gt; n-1<br>k+1 -&gt; 1<br>…<br>$p_n$ -&gt; $p_{n-1}$<br>…<br>n-1 -&gt; n-k+1<br>n -&gt; n-k</p>
 <p>这样，我们就得到一个递推关系式：<a href="#">$p_n = (p_{n-1} + k)$ % $n$</a>，初始条件 $p_1 = 1$（1 个人时幸存者为自己），当然该提递推公式同样适用于 n &lt; k 的情况。</p>
@@ -284,7 +268,7 @@
         <div class="page-reward" style="margin:10px 0;">
           
           
-          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//img0.fanhaobai.com/wechat.jpeg">
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
           
         </div>
       
@@ -534,23 +518,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">成长</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,19 +526,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统原理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +534,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,7 +578,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">成长</a>
               </li>
             
             <div class="clearfix"></div>
