@@ -1,0 +1,5 @@
+# robots.txt for www.fanhaobai.com 2019.04.26
+User-agent: *
+Disallow: /404.html
+Disallow: /categories
+Sitemap: http://www.fanhaobai.com/sitemap.xml
