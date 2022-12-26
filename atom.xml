@@ -6,10 +6,31 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.fanhaobai.com/"/>
-  <updated>2022-12-23T09:08:13.386Z</updated>
+  <updated>2022-12-26T06:03:15.601Z</updated>
   <id>https://www.fanhaobai.com/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用规则引擎来做决策</title>
+    <link href="https://www.fanhaobai.com/2022/12/rule-engine.html"/>
+    <id>https://www.fanhaobai.com/2022/12/rule-engine.html</id>
+    <published>2022-12-25T12:00:00.000Z</published>
+    <updated>2022-12-26T06:03:15.601Z</updated>
+    
+    <content type="html"><![CDATA[<p>规则引擎是一种嵌入在应用程序中的组件，实现了将业务决策从应用程序代码中分离出来，并使用预定义的语义模块编写业务决策。接受数据输入，解释业务规则，并根据规则做出业务决策。</p><p><img src="//www.fanhaobai.com/2022/12/rule-engine/12805423-37FB-4225-91E3-EC6473BA720C.png" alt="规则引擎"><span id="more"></span></p><p>业务规则是指：设置一个或多个条件，当满足这些条件时会触发一个或多个操作。多个业务规则组成决策树，通常使用 DSL 语言来表述。</p><h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><ul><li>自动化决策</li><li>业务规则</li><li>规则引擎</li><li>可配置</li></ul><h2 id="商业价值"><a href="#商业价值" class="headerlink" title="商业价值"></a>商业价值</h2><h3 id="业务自动化"><a href="#业务自动化" class="headerlink" title="业务自动化"></a>业务自动化</h3><p>特定场景可以代替人工自动化决策，标准统一，错误率低。</p><h3 id="提高研发效率"><a href="#提高研发效率" class="headerlink" title="提高研发效率"></a>提高研发效率</h3><p>现所有业务决策逻辑都是通过 if-else、switch 的方式硬编码在业务代码中，都要经过需求-&gt;开发-&gt;测试-&gt;上线的周期，时间长。</p><h3 id="降低研发成本"><a href="#降低研发成本" class="headerlink" title="降低研发成本"></a>降低研发成本</h3><p>功能复用，减少重复开发。</p><h2 id="解决方案介绍"><a href="#解决方案介绍" class="headerlink" title="解决方案介绍"></a>解决方案介绍</h2><h3 id="业务风控"><a href="#业务风控" class="headerlink" title="业务风控"></a>业务风控</h3><p>通过业务数据分析，可以抽象出用户异常行为的规则：</p><p><img src="//www.fanhaobai.com/2022/12/rule-engine/C0C5B489-90D1-4937-A8D8-55459E951ABC.png" alt="风控规则"></p><p>然后，风控系统在判断是否为风险操作时，只需要规则引擎加载并执行风控规则，即可得到结果。<br>想要提高风控系统的准确性，只需要不断地迭代完善风控规则。</p><p><img src="//www.fanhaobai.com/2022/12/rule-engine/C290970F-D33E-49DF-846B-577E62694709.png" alt="风控系统"></p><h3 id="运营活动"><a href="#运营活动" class="headerlink" title="运营活动"></a>运营活动</h3><p>拿最常见的抽奖和做任务 2 种运营活动来说，都可以将具体活动逻辑抽象为业务规则：<br>① 抽奖，不同的人&amp;不同的场景对应不同的奖池（中奖概率与奖品集合规则）；<br>② 做任务，任务领取规则、任务完成指标动态可配（任务规则）；</p><p><img src="//www.fanhaobai.com/2022/12/rule-engine/30B59826-F443-4D9A-AC98-42F7E28127D5.png" alt="运营活动"></p><h3 id="内容分发"><a href="#内容分发" class="headerlink" title="内容分发"></a>内容分发</h3><p>针对某些特定的用户或者某种场景的用户，下发特定的展示内容或者推送短信等触达消息，都可以将这些特定用户的逻辑梳理为内容分发规则。</p><p><img src="//www.fanhaobai.com/2022/12/rule-engine/E937E855-8B7C-4B4C-9761-0764D563BE42.png" alt="内容分发"></p><h2 id="我们的机会"><a href="#我们的机会" class="headerlink" title="我们的机会"></a>我们的机会</h2><h3 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h3><p>只要是有明确业务规则的逻辑，且规则数量较大的场景，都可以运用规则引擎来解决，比如商品推荐、自动审核、内容分发的场景。</p><ul><li>医生带货推荐商品<br>特定医生推荐特定商品</li><li>处方系统前置审核<br>特定诊断有什么特定审核规则</li><li>运营活动<br>特定用户做什么任务领取什么奖励</li><li>A/B test平台<br>特定用户下发特定内容</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;规则引擎是一种嵌入在应用程序中的组件，实现了将业务决策从应用程序代码中分离出来，并使用预定义的语义模块编写业务决策。接受数据输入，解释业务规则，并根据规则做出业务决策。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//www.fanhaobai.com/2022/12/rule-engine/12805423-37FB-4225-91E3-EC6473BA720C.png&quot; alt=&quot;规则引擎&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="https://www.fanhaobai.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Flink在用户画像上的应用</title>
@@ -95,9 +116,9 @@
       <category term="系统设计" scheme="https://www.fanhaobai.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="工具" scheme="https://www.fanhaobai.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="系统设计" scheme="https://www.fanhaobai.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="工具" scheme="https://www.fanhaobai.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -341,9 +362,9 @@
       <category term="系统设计" scheme="https://www.fanhaobai.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="工具" scheme="https://www.fanhaobai.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="系统设计" scheme="https://www.fanhaobai.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="工具" scheme="https://www.fanhaobai.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -766,9 +787,9 @@
       <category term="Lua" scheme="https://www.fanhaobai.com/categories/%E8%AF%AD%E8%A8%80/Lua/"/>
     
     
-      <category term="Lua" scheme="https://www.fanhaobai.com/tags/Lua/"/>
-    
       <category term="Redis" scheme="https://www.fanhaobai.com/tags/Redis/"/>
+    
+      <category term="Lua" scheme="https://www.fanhaobai.com/tags/Lua/"/>
     
   </entry>
   
