@@ -179,6 +179,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018/12/load-balance-smooth-weighted-round-robin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/12/load-balance-smooth-weighted-round-robin.html">负载均衡算法 — 平滑加权轮询</a>
+    </h1>
+  
+
+        
+        <a href="../../2018/12/load-balance-smooth-weighted-round-robin.html" class="archive-article-date">
+  	<time datetime="2018-12-02T20:45:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-03</time>
+</a>
+        
+      </header>
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 <a href="https://www.fanhaobai.com/2018/11/load-balance-round-robin.html">负载均衡算法 — 轮询</a> 一文中，我们就指出了加权轮询算法一个明显的缺陷。即在某些特殊的权重下，加权轮询调度会生成不均匀的实例序列，这种不平滑的负载可能会使某些实例出现瞬时高负载的现象，导致系统存在宕机的风险。为了解决这个调度缺陷，就提出了 <a href="#">平滑加权轮询</a> 调度算法。</p>
+<p><img src="//www.fanhaobai.com/2018/12/load-balance-smooth-weighted-round-robin/fc16ba37-06b0-4193-9969-7541852dd46c.jpg" alt="预览图">
+        
+      
+
+      
+    </div>
+    
+        <div class="article-info article-info-index">
+          <div class="tag-category">
+          
+            <div class="tag-box">
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+              
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+            </div>
+          
+            <p class="article-more-link">
+              <a class="article-more-a" href="../../2018/12/load-balance-smooth-weighted-round-robin.html">全文 >></a>
+            </p>
+          
+          </div>
+        </div>
+    
+    
+    <div class="clearfix"></div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-2018/11/load-balance-round-robin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1012,103 +1109,6 @@
           
             <p class="article-more-link">
               <a class="article-more-a" href="../../2017/12/elk-install.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-2017/12/elk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/elk.html">ELK集中式日志平台之一 — 平台架构</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/elk.html" class="archive-article-date">
-  	<time datetime="2017-12-16T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随着微服务化的推广，我们的应用都会采取分布式方式部署，这就会导致应用日志比较分散，应用监控和排查问题都比较困难，同时效率还低下，集中式日志平台就是为了解决这个问题。</p>
-<p><img src="//www.fanhaobai.com/2017/12/elk/c0625948-b690-48ad-a178-63fc08b0cefb.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/系统设计/" class="article-tag-list-link color5">系统设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/elk.html">全文 >></a>
             </p>
           
           </div>

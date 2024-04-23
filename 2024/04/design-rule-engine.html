@@ -21,17 +21,19 @@
     
   
   <link rel="apple-touch-icon" href="//www.fanhaobai.com/header.jpg">
-  <title>Howborn个人笔记</title>
+  <title>如何实现一个自定义规则引擎 - Howborn个人笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目前专注于后端研发，关注分布式系统性能优化。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Howborn个人笔记">
-<meta property="og:url" content="https://www.fanhaobai.com/page/3/index.html">
+  <meta name="description" content="规则引擎的功能可以简化为当满足一些条件时触发一些操作，通常使用 DSL 自定义语法来表述。规则引擎需要先解析 DSL 语法形成语法树，然后遍历语法树得到完整的语法表达式，最后执行这些语法表达式完成规则的执行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何实现一个自定义规则引擎">
+<meta property="og:url" content="https://www.fanhaobai.com/2024/04/design-rule-engine.html">
 <meta property="og:site_name" content="Howborn个人笔记">
-<meta property="og:description" content="目前专注于后端研发，关注分布式系统性能优化。">
+<meta property="og:description" content="规则引擎的功能可以简化为当满足一些条件时触发一些操作，通常使用 DSL 自定义语法来表述。规则引擎需要先解析 DSL 语法形成语法树，然后遍历语法树得到完整的语法表达式，最后执行这些语法表达式完成规则的执行。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.fanhaobai.com/header.jpg">
-<meta property="article:tag" content="架构,后端,Go,PHP,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
+<meta property="article:published_time" content="2024-04-23T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-23T11:45:34.972Z">
+<meta property="article:tag" content="架构">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.fanhaobai.com/header.jpg">
   
@@ -177,83 +179,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2017/12/elk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2024/04/design-rule-engine" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/elk.html">ELK集中式日志平台之一 — 平台架构</a>
+    <h1 class="article-title" itemprop="name">
+      如何实现一个自定义规则引擎
     </h1>
   
 
         
-        <a href="../../2017/12/elk.html" class="archive-article-date">
-  	<time datetime="2017-12-16T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+        <a href="" class="archive-article-date">
+  	<time datetime="2024-04-23T13:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-23</time>
 </a>
         
       </header>
     
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随着微服务化的推广，我们的应用都会采取分布式方式部署，这就会导致应用日志比较分散，应用监控和排查问题都比较困难，同时效率还低下，集中式日志平台就是为了解决这个问题。</p>
-<p><img src="//www.fanhaobai.com/2017/12/elk/c0625948-b690-48ad-a178-63fc08b0cefb.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
+      <div class="article-section">
+        <div class="tag-category">
           
-            <div class="tag-box">
-              
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
         		</li>
       		
 		</ul>
 	</div>
 
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/系统设计/" class="article-tag-list-link color5">系统设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
           
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/elk.html">全文 >></a>
-            </p>
-          
-          </div>
+
         </div>
+      </div>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>规则引擎的功能可以简化为当满足一些条件时触发一些操作，通常使用 DSL 自定义语法来表述。规则引擎需要先解析 DSL 语法形成语法树，然后遍历语法树得到完整的语法表达式，最后执行这些语法表达式完成规则的执行。</p>
+<p><img src="//www.fanhaobai.com/2024/04/design-rule-engine/12805423-37FB-4225-91E3-EC6473BA720C.png" alt="规则引擎"><span id="more"></span></p>
+<p>本文以 <a target="_blank" rel="noopener" href="https://github.com/bilibili/gengine">gengine</a> 为例来探讨如果设计和实现一个自定义规则引擎。</p>
+<h2 id="支持的语义"><a href="#支持的语义" class="headerlink" title="支持的语义"></a>支持的语义</h2><p>为了满足常见的业务规则，规则引擎应该要支持的语义有：</p>
+<h3 id="逻辑与算术运算"><a href="#逻辑与算术运算" class="headerlink" title="逻辑与算术运算"></a>逻辑与算术运算</h3><ul>
+<li>数学运算（+、-、*、/）</li>
+<li>逻辑运算（&amp;&amp;、||、!）</li>
+<li>比较运算（==、!=、&gt;、&lt;、&gt;=、&lt;=）</li>
+</ul>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><ul>
+<li>条件（IF ELSE）</li>
+<li>循环 (FOR)</li>
+</ul>
+<h3 id="高级语义"><a href="#高级语义" class="headerlink" title="高级语义"></a>高级语义</h3><ul>
+<li>对象属性访问（对象.属性）</li>
+<li>方法调用（func()）</li>
+</ul>
+<h2 id="规则语法的解析"><a href="#规则语法的解析" class="headerlink" title="规则语法的解析"></a>规则语法的解析</h2><p>规则的 DSL 语法定义应该简单明了，gengine 使用了开源的语法解析器 Antlr4 来定义和解析规则语法。</p>
+<h3 id="定义规则语法"><a href="#定义规则语法" class="headerlink" title="定义规则语法"></a>定义规则语法</h3><p>一个规则的 DSL 基本语法格式如下：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">rule <span class="string">&quot;rulename&quot;</span> <span class="string">&quot;rule-describtion&quot;</span> salience  <span class="number">10</span></span><br><span class="line">begin</span><br><span class="line"></span><br><span class="line"><span class="comment">//规则体</span></span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>其中规则体为具体规则语义，由上述的 <a href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%AD%E4%B9%89">逻辑与算术运算</a>、<a href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%AD%E4%B9%89">流程控制</a>、<a href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%AD%E4%B9%89">高级语义</a> 组合而成。 </p>
+<p>例如，<strong>判断为一个大额异常订单</strong>的规则体：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> Order.Price&gt;= <span class="number">1000000</span> &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编写解析器语法"><a href="#编写解析器语法" class="headerlink" title="编写解析器语法"></a>编写解析器语法</h3><p>Antlr4 解析器语法定义文件后缀名为<code>.g4</code>，以下内容为解析器的语法定义，解析器根据语法定义去逐行解析生成语法树。</p>
+<p>这里省略了一些非核心的语法定义并做了简化，完整内容查看 <a href="//www.fanhaobai.com/2024/04/design-rule-engine/gengine.g4">gengine.g4</a>]</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">grammar gengine;</span><br><span class="line"></span><br><span class="line">primary: ruleEntity+;</span><br><span class="line"><span class="comment">// 规则定义</span></span><br><span class="line">ruleEntity:  RULE ruleName ruleDescription? salience? BEGIN ruleContent END;</span><br><span class="line">ruleName : stringLiteral;</span><br><span class="line">ruleDescription : stringLiteral;</span><br><span class="line">salience : SALIENCE integer;</span><br><span class="line"><span class="comment">// 规则体</span></span><br><span class="line">ruleContent : statements;</span><br><span class="line">statements: statement* returnStmt?;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本语句</span></span><br><span class="line">statement : ifStmt | breakStmt;</span><br><span class="line"></span><br><span class="line">expression : mathExpression</span><br><span class="line">            | expression comparisonOperator expression</span><br><span class="line">            | expression logicalOperator expression</span><br><span class="line">            ;</span><br><span class="line"></span><br><span class="line">mathExpression : mathExpression  mathMdOperator mathExpression</span><br><span class="line">               | mathExpression  mathPmOperator mathExpression</span><br><span class="line">               | expressionAtom</span><br><span class="line">               | LR_BRACKET mathExpression RR_BRACKET</span><br><span class="line">               ;</span><br><span class="line"></span><br><span class="line">expressionAtom</span><br><span class="line">    : functionCall</span><br><span class="line">    | constant</span><br><span class="line">    | variable</span><br><span class="line">    ;</span><br><span class="line">returnStmt : RETURN expression?;</span><br><span class="line">ifStmt : IF expression LR_BRACE statements RR_BRACE elseIfStmt*  elseStmt?;</span><br><span class="line">elseStmt : ELSE LR_BRACE statements RR_BRACE;</span><br><span class="line"></span><br><span class="line">constant</span><br><span class="line">    : booleanLiteral</span><br><span class="line">    | integer</span><br><span class="line">    | stringLiteral</span><br><span class="line">    ;</span><br><span class="line">functionArgs</span><br><span class="line">    : (constant | variable  | functionCall | expression)  (<span class="string">&#x27;,&#x27;</span>(constant | variable | functionCall | expression))*</span><br><span class="line">    ;</span><br><span class="line">integer : MINUS? INT;</span><br><span class="line">stringLiteral: DQUOTA_STRING;</span><br><span class="line">booleanLiteral : TRUE | FALSE;</span><br><span class="line">functionCall : SIMPLENAME LR_BRACKET functionArgs? RR_BRACKET;</span><br><span class="line">variable :  SIMPLENAME | DOTTEDNAME;</span><br><span class="line">mathPmOperator : PLUS | MINUS;</span><br><span class="line">mathMdOperator : MUL | DIV;</span><br><span class="line">comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关键字省略</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="解析器生成语法树"><a href="#解析器生成语法树" class="headerlink" title="解析器生成语法树"></a>解析器生成语法树</h3><p>如，<strong>判断为一个大额异常订单</strong>的规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rule &quot;order-large-price&quot; &quot;订单大额金额&quot; salience 10</span><br><span class="line">begin</span><br><span class="line">    if Order.Price &gt;= 1000000 &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>语法解析器解析之后，生成语法树：</p>
+<p><img src="//www.fanhaobai.com/2024/04/design-rule-engine/6082eaf6-9534-4989-86d6-2422a3ab54b0.png" alt="语法树"></p>
+<h3 id="遍历语法树生成语句表达式"><a href="#遍历语法树生成语句表达式" class="headerlink" title="遍历语法树生成语句表达式"></a>遍历语法树生成语句表达式</h3><p>解析器生成语法树之后，只需要遍历语法树即可得到规则完整的语句表达式。 Antlr4 解析器会生成 Listener 接口，这些接口在遍历语法树时会被调用。</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> gengineListener <span class="keyword">interface</span> &#123;</span><br><span class="line">	antlr.ParseTreeListener</span><br><span class="line">	<span class="comment">// 省略了一些只列举了部分方法</span></span><br><span class="line">	<span class="comment">// EnterRuleEntity is called when entering the ruleEntity production.</span></span><br><span class="line">	EnterRuleEntity(c *RuleEntityContext)</span><br><span class="line">    <span class="comment">// ExitRuleEntity is called when exiting the ruleEntity production.</span></span><br><span class="line">    ExitRuleEntity(c *RuleEntityContext)</span><br><span class="line">	<span class="comment">// EnterRuleContent is called when entering the ruleContent production.</span></span><br><span class="line">	EnterRuleContent(c *RuleContentContext)</span><br><span class="line">    <span class="comment">// ExitRuleContent is called when exiting the ruleContent production.</span></span><br><span class="line">    ExitRuleContent(c *RuleContentContext)</span><br><span class="line">	<span class="comment">// EnterStatement is called when entering the statement production.</span></span><br><span class="line">	EnterStatement(c *StatementContext)</span><br><span class="line">    <span class="comment">// ExitStatement is called when exiting the statement production.</span></span><br><span class="line">    ExitStatement(c *StatementContext)</span><br><span class="line">    <span class="comment">// EnterIfStmt is called when entering the ifStmt production.</span></span><br><span class="line">    EnterIfStmt(c *IfStmtContext)</span><br><span class="line">    <span class="comment">// ExitIfStmt is called when exiting the ifStmt production.</span></span><br><span class="line">    ExitIfStmt(c *IfStmtContext)</span><br><span class="line">	<span class="comment">// EnterExpression is called when entering the expression production.</span></span><br><span class="line">	EnterExpression(c *ExpressionContext)</span><br><span class="line">    <span class="comment">// ExitExpression is called when exiting the expression production.</span></span><br><span class="line">    ExitExpression(c *ExpressionContext)</span><br><span class="line">	<span class="comment">// EnterInteger is called when entering the integer production.</span></span><br><span class="line">	EnterInteger(c *IntegerContext)</span><br><span class="line">    <span class="comment">// ExitInteger is called when exiting the integer production.</span></span><br><span class="line">    ExitInteger(c *IntegerContext)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现在遍历语法树时，每个节点都有 EnterXXX() 和 ExitXXX() 方法存在，是成对出现的。</p>
+<p>因此要遍历语法树只需要实现 gengineListener 接口即可，gengine 巧妙的引入<code>栈</code>结构，遍历完语法树后（树的递归遍历就是进栈出栈过程），就得到了完整的规则语句表达式。 这里只列举部分方法，完整实现见 <a target="_blank" rel="noopener" href="https://github.com/bilibili/gengine/blob/main/internal/iparser/gengine_parser_listener.go">gengine_parser_listener</a>。</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> GengineParserListener <span class="keyword">struct</span> &#123;</span><br><span class="line">	parser.BasegengineListener</span><br><span class="line"></span><br><span class="line">	KnowledgeContext *base.KnowledgeContext</span><br><span class="line">	Stack            *stack.Stack</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *GengineParserListener)</span></span> EnterRuleEntity(ctx *parser.RuleEntityContext) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(g.ParseErrors) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    entity := &amp;base.RuleEntity&#123;</span><br><span class="line">        Salience: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    g.ruleName = <span class="string">&quot;&quot;</span></span><br><span class="line">    g.ruleDescription = <span class="string">&quot;&quot;</span></span><br><span class="line">    g.salience = <span class="number">0</span></span><br><span class="line">    g.Stack.Push(entity)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *GengineParserListener)</span></span> ExitRuleEntity(ctx *parser.RuleEntityContext) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(g.ParseErrors) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    entity := g.Stack.Pop().(*base.RuleEntity)</span><br><span class="line">    g.KnowledgeContext.RuleEntities[entity.RuleName] = entity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>gengine 通过解析器解析规则内容之后，规则的数据结构如下：</p>
+<p><img src="//www.fanhaobai.com/2024/04/design-rule-engine/65ebb70a-3e2d-4e20-a1f2-227fc08c0669.png" alt="规则数据结构"></p>
+<p>全局的 hashmap 以规则名为 key，规则体为 value，规则体中的 ruleContent 为该规则所有的语句表达式列表，列表中的值指向具体的语句表达式实体，</p>
+<p>语句表达式实体由<strong>逻辑与算术运算</strong>、<strong>流程控制（IF、FOR）</strong>等基本语句组成。</p>
+<h2 id="规则语法的执行"><a href="#规则语法的执行" class="headerlink" title="规则语法的执行"></a>规则语法的执行</h2><p>其实遍历语法树的过程中，将规则的执行逻辑也放入 ExitXXX() 方法，这样就能完成规则的解析和执行。但是 gengine 没有这么做，而是将规则的解析和执行解耦，<br>因为规则的解析往往只需要初始化一次，或者在规则有变更时热更新解析规则，而规则的执行则是在需要校验规则的时候。</p>
+<p>从 gengine 的规则数据结构可知，只需要遍历全局的 hashmap，即可按顺序执行所有的规则（顺序模式），执行每一个规则后会通过<code>addResult()</code>方法记录执行结果：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顺序模式</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Gengine)</span></span> Execute(rb *builder.RuleBuilder, b <span class="type">bool</span>) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> _, r := <span class="keyword">range</span> rb.Kc.RuleEntities &#123;</span><br><span class="line">		v, err, bx := r.Execute(rb.Dc)</span><br><span class="line">		<span class="keyword">if</span> bx &#123;</span><br><span class="line">			<span class="comment">// 记录每个规则执行结果</span></span><br><span class="line">			g.addResult(r.RuleName, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 省略部分</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于某一个规则的执行，则会去遍历规则体 ruleContent 的所有语句表达式列表，然后按顺序去执行该规则下的所有语句表达式：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Statements)</span></span> Evaluate(dc *context.DataContext, Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value) (reflect.Value, <span class="type">error</span>, <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> _, statement := <span class="keyword">range</span> s.StatementList &#123;</span><br><span class="line">		v, err, b := statement.Evaluate(dc, Vars)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), err, <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> b &#123;</span><br><span class="line">			<span class="comment">// return的情况不需要继续执行</span></span><br><span class="line">			<span class="keyword">return</span> v, <span class="literal">nil</span>, b</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> s.ReturnStatement != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.ReturnStatement.Evaluate(dc, Vars)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>gengine 为每个语句类型都实现了 Evaluate() 方法，这里只讨论 IF 语句的执行：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IfStmt <span class="keyword">struct</span> &#123;</span><br><span class="line">	Expression     *Expression</span><br><span class="line">	StatementList  *Statements</span><br><span class="line">	ElseIfStmtList []*ElseIfStmt</span><br><span class="line">	ElseStmt       *ElseStmt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *IfStmt)</span></span> Evaluate(dc *context.DataContext, Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value) (reflect.Value, <span class="type">error</span>, <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="comment">// 执行条件表达式</span></span><br><span class="line">	it, err := i.Expression.Evaluate(dc, Vars)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), err, <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 执行条件为真时的语句</span></span><br><span class="line">	<span class="keyword">if</span> it.Bool() &#123;</span><br><span class="line">		<span class="keyword">if</span> i.StatementList == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> i.StatementList.Evaluate(dc, Vars)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中条件表达式<code>Expression.Evaluate()</code>为计算条件表达式的值：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *Expression)</span></span> Evaluate(dc *context.DataContext, Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value) (reflect.Value, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 原子表达式</span></span><br><span class="line">	<span class="keyword">var</span> atom reflect.Value</span><br><span class="line">	<span class="keyword">if</span> e.ExpressionAtom != <span class="literal">nil</span> &#123;</span><br><span class="line">		evl, err := e.ExpressionAtom.Evaluate(dc, Vars)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), err</span><br><span class="line">		&#125;</span><br><span class="line">		atom = evl</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 比较操作</span></span><br><span class="line">	<span class="keyword">if</span> e.ComparisonOperator != <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		<span class="comment">// 计算左值</span></span><br><span class="line">		lv, err := e.ExpressionLeft.Evaluate(dc, Vars)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), err</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 计算右值</span></span><br><span class="line">		rv, err := e.ExpressionRight.Evaluate(dc, Vars)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), err</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">// 省略了类型转化</span></span><br><span class="line">        <span class="keyword">switch</span> e.ComparisonOperator &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;==&quot;</span>:</span><br><span class="line">			b = reflect.ValueOf(lv == rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;!=&quot;</span>:</span><br><span class="line">            b = reflect.ValueOf(lv != rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;&gt;&quot;</span>:</span><br><span class="line">            b = reflect.ValueOf(lv &gt; rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;&lt;&quot;</span>:</span><br><span class="line">            b = reflect.ValueOf(lv &lt; rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;&gt;=&quot;</span>:</span><br><span class="line">            b = reflect.ValueOf(lv &gt;= rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;&lt;=&quot;</span>:</span><br><span class="line">            b = reflect.ValueOf(lv &lt;= rv)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递归执行到<code>ExpressionAtom.Evaluate()</code>原子表达式时，则可以得到该原子表达式的值以结束递归：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *ExpressionAtom)</span></span> Evaluate(dc *context.DataContext, Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value) (reflect.Value, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(e.Variable) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="comment">// 是变量则取变量值，通过反射获取注入的自定义对象值</span></span><br><span class="line">		<span class="keyword">return</span> dc.GetValue(Vars, e.Variable)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> e.Constant != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 是常量就返回值</span></span><br><span class="line">		<span class="keyword">return</span> e.Constant.Evaluate(dc, Vars)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 省略部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="支持自定义对象注入"><a href="#支持自定义对象注入" class="headerlink" title="支持自定义对象注入"></a>支持自定义对象注入</h2><p>在上下文中注入自定义对象后，就可以在规则中使用注入的对象。使用例子：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 规则体</span></span><br><span class="line">rule <span class="string">&quot;test-object&quot;</span> <span class="string">&quot;测试自定义对象&quot;</span> salience <span class="number">10</span></span><br><span class="line">begin</span><br><span class="line">    <span class="comment">// 访问自定义对象Order</span></span><br><span class="line">    <span class="keyword">if</span> Order.Price &gt;= <span class="number">1000000</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注入自定义对象Order</span></span><br><span class="line">dataContext := gctx.NewDataContext()</span><br><span class="line">dataContext.Add(<span class="string">&quot;Order&quot;</span>, Order)</span><br></pre></td></tr></table></figure>
+
+<p>现在来看下 gengine 的具体实现，主要是使用反射特性：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dc *DataContext)</span></span> Add(key <span class="type">string</span>, obj <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">	dc.lockBase.Lock()</span><br><span class="line">	<span class="keyword">defer</span> dc.lockBase.Unlock()</span><br><span class="line">	dc.base[key] = reflect.ValueOf(obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>gengine 解析规则时会将自定义对象标记为<code>variable</code>类型，通过 GetValue() 获取自定义对象属性值：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取变量值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dc *DataContext)</span></span> GetValue(Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value, variable <span class="type">string</span>) (reflect.Value, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> strings.Contains(variable, <span class="string">&quot;.&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 对象a.b</span></span><br><span class="line">		structAndField := strings.Split(variable, <span class="string">&quot;.&quot;</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(structAndField) == <span class="number">2</span> &#123;</span><br><span class="line">			a := structAndField[<span class="number">0</span>]</span><br><span class="line">			b := structAndField[<span class="number">1</span>]</span><br><span class="line">			<span class="comment">// 获取注入的对象</span></span><br><span class="line">			dc.lockBase.Lock()</span><br><span class="line">			v, ok := dc.base[a]</span><br><span class="line">			dc.lockBase.Unlock()</span><br><span class="line">			<span class="keyword">if</span> ok &#123;</span><br><span class="line">				<span class="keyword">return</span> core.GetStructAttributeValue(v, b)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 反射获取对象属性值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetStructAttributeValue</span><span class="params">(obj reflect.Value, fieldName <span class="type">string</span>)</span></span> (reflect.Value, <span class="type">error</span>) &#123;</span><br><span class="line">    stru := obj</span><br><span class="line">    <span class="keyword">var</span> attrVal reflect.Value</span><br><span class="line">    <span class="keyword">if</span> stru.Kind() == reflect.Ptr &#123;</span><br><span class="line">        attrVal = stru.Elem().FieldByName(fieldName)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        attrVal = stru.FieldByName(fieldName)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> attrVal, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="支持自定义方法注入"><a href="#支持自定义方法注入" class="headerlink" title="支持自定义方法注入"></a>支持自定义方法注入</h2><p>同样在上下文中注入自定义方法后，就可以在规则中使用注入的方法。使用例子：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 规则体</span></span><br><span class="line">rule <span class="string">&quot;test-func&quot;</span> <span class="string">&quot;测试自定义方法&quot;</span> salience <span class="number">10</span></span><br><span class="line">begin</span><br><span class="line">    <span class="comment">// 自定义方法GetCount获取指标数据（患者当天的订单数量）</span></span><br><span class="line">    num = GetCount(<span class="string">&quot;order-patient-id&quot;</span>, Order.PatientId)</span><br><span class="line">	<span class="keyword">if</span> num &gt;= <span class="number">5</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注入自定义方法GetData</span></span><br><span class="line">dataSvc := s.indicatorDao.NewDataService(ctx)</span><br><span class="line">dataContext := gctx.NewDataContext()</span><br><span class="line">dataContext.Add(<span class="string">&quot;GetCount&quot;</span>, dataSvc.GetCount)</span><br></pre></td></tr></table></figure>
+
+<p>gengine 自定义方法的注入也是使用反射来实现，自定义方法的注入同自定义对象一样也是使用 Add() 方法注入。</p>
+<p>gengine 解析规则时会将自定义方法标记为<code>functionCall</code>类型：</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dc *DataContext)</span></span> ExecFunc(Vars <span class="keyword">map</span>[<span class="type">string</span>]reflect.Value, funcName <span class="type">string</span>, parameters []reflect.Value) (reflect.Value, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 获取注入的方法</span></span><br><span class="line">    dc.lockBase.Lock()</span><br><span class="line">    v, ok := dc.base[funcName]</span><br><span class="line">    dc.lockBase.Unlock()</span><br><span class="line">    <span class="keyword">if</span> ok &#123;</span><br><span class="line">        args := core.ParamsTypeChange(v, parameters)</span><br><span class="line">		<span class="comment">// 调用方法</span></span><br><span class="line">        res := v.Call(args)</span><br><span class="line">        raw, e := core.GetRawTypeValue(res)</span><br><span class="line">        <span class="keyword">if</span> e != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> reflect.ValueOf(<span class="literal">nil</span>), e</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> raw, <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="支持并发执行"><a href="#支持并发执行" class="headerlink" title="支持并发执行"></a>支持并发执行</h2><p>通常情况下顺序模式执行即可满足要求，但是当规则量比较大时，顺序执行的耗时就会比较长。</p>
+<p><img src="//www.fanhaobai.com/2024/04/design-rule-engine/36E0B373-95A2-4E26-AFE2-ED9522CCB708.png" alt="顺序模式"></p>
+<p>规则引擎在执行所有规则的时候，其实是遍历全局的 hashmap 然后再顺序执行每一个规则，且每个规则之间没有依赖关系，因此可以每一个规则一个协程来并发执行。</p>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Gengine)</span></span> ExecuteConcurrent(rb *builder.RuleBuilder) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">	wg.Add(<span class="built_in">len</span>(rb.Kc.RuleEntities))</span><br><span class="line">	<span class="keyword">for</span> _, r := <span class="keyword">range</span> rb.Kc.RuleEntities &#123;</span><br><span class="line">		rr := r</span><br><span class="line">		<span class="comment">// 协程并发</span></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			v, e, bx := rr.Execute(rb.Dc)</span><br><span class="line">			<span class="keyword">if</span> bx &#123;</span><br><span class="line">				g.addResult(rr.RuleName, v)</span><br><span class="line">			&#125;</span><br><span class="line">			wg.Done()</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line">	<span class="comment">// 省略部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>有了规则引擎之后，很多在业务代码中的 if-else、switch 硬编码，都能抽象为规则并使用规则引擎，这样能极大地缩短需求开发周期。</p>
+<h3 id="业务风控"><a href="#业务风控" class="headerlink" title="业务风控"></a>业务风控</h3><p>通过业务数据分析，可以抽象出用户异常行为的规则：</p>
+<p><img src="//www.fanhaobai.com/2022/12/rule-engine/C0C5B489-90D1-4937-A8D8-55459E951ABC.png" alt="风控规则"></p>
+<p>然后，风控系统在判断是否为风险操作时，只需要规则引擎加载并执行风控规则，即可得到结果。<br>想要提高风控系统的准确性，只需要不断地迭代完善风控规则。</p>
+<p><img src="//www.fanhaobai.com/2022/12/rule-engine/C290970F-D33E-49DF-846B-577E62694709.png" alt="风控系统"></p>
+<p>规则引擎在业务风控的实践，可以参考 <a href="https://www.fanhaobai.com/2022/06/risk-rule.html">基于准实时规则引擎的业务风控实践</a>。</p>
+<h3 id="运营活动"><a href="#运营活动" class="headerlink" title="运营活动"></a>运营活动</h3><p>拿最常见的抽奖和做任务 2 种运营活动来说，都可以将具体活动逻辑抽象为业务规则：<br>① 抽奖，不同的人&amp;不同的场景对应不同的奖池（中奖概率与奖品集合规则）；<br>② 做任务，任务领取规则、任务完成指标动态可配（任务规则）；</p>
+<p><img src="//www.fanhaobai.com/2022/12/rule-engine/30B59826-F443-4D9A-AC98-42F7E28127D5.png" alt="运营活动"></p>
+<h3 id="内容分发"><a href="#内容分发" class="headerlink" title="内容分发"></a>内容分发</h3><p>针对某些特定的用户或者某种场景的用户，下发特定的展示内容或者推送短信等触达消息，都可以将这些特定用户的逻辑梳理为内容分发规则。</p>
+<p><img src="//www.fanhaobai.com/2022/12/rule-engine/E937E855-8B7C-4B4C-9761-0764D563BE42.png" alt="内容分发"></p>
+
+      
+
+      
+        <div class="page-reward" style="margin:10px 0;">
+          
+          
+          <img class="reward-img" style="width:300px;height:300px;display:inline;" src="//www.fanhaobai.com/wechat.jpeg">
+          
+        </div>
+      
+    </div>
+    
+    
+       <div class="article-info article-info-index">
+          
+<div class="share-icons">
+    <a class="weibo share-sns" data-type="weibo">
+      <i class="icon icon-weibo"></i>
+    </a>
+    <a class="weixin share-sns wxFab" data-type="weixin">
+      <i class="icon icon-weixin"></i>
+    </a>
+    <a class="qzone share-sns" data-type="qzone">
+      <i class="icon icon-qzone"></i>
+    </a>
+    <a class="google share-sns" data-type="google">
+      <i class="icon icon-google"></i>
+    </a>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+  <a class="close js-modal-close" ><i class="icon icon-close"></i></a>
+  <p>扫一扫，分享到微信</p>
+  <div class="wx-qrcode">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aS5KDMAwFwNz/0swBUmaeJLLAbq+oBALNQrE+n0+8rsX6/nb1yfevrY5XVz2wMDAwXsu4btf9g65+p/qIyVWrZ8PAwDiHMQ+L97fPMfcva/k5BgYGRhxe7/H5RhMDAwPjWUY1+cxDOQYGBkY1iU0qXdUCXJ76PpaLY2BgvJAxD5G/O/5JfwMDA+NVjKu4qldVk9LewsDA2JuRB7j5mEW+vas+DwYGxsmM6iPeg5/6/WbVEAMD4+WMvKDWG/bqFfqbQ2YYGBibMiatyurNqpvC/AVhYGCcw5hX4589vzACgoGBcQCjF1KT21THLJp3x8DAOIxRTVwnYTdvJ5QDLgYGxhaMXqF/8m0OK7QwMTAwDmBUBx16qW91w5cU/uodTgwMjPcxqk3HPCmdl9UmrwwDA2MnRt5QnLcwq6W3QsjGwMA4gFENwXnRLUmSqxgMDAyM3qYwSUQnZbt/UlkMDIytGc/eoLp6wxbLkI2BgXEAI98OPpXuTsYsljMjGBgYBzDyxuE8uZ03BjAwMM5kVMte1VGJPJgW0lcMDIytGVdxTdLRXsshomJgYGzN6JXG8nZC77HumxO9vwQMDIy3M5IgW3Xnby5nl980BgbGdoxq4Ot9Mklio30uBgYGRivU9s7/ecDFwMDYmpE3NZOyXa+FuUxiMTAwtmb8bow1P786iIaBgXEOY77h6w2NJQ3O/BgDA2NTxh/5jXRy56ve1QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+  </div>
+</div>
+
+<div class="mask js-mask"></div>
+       </div>
     
     <div class="clearfix"></div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="../../2023/01/recommender-system.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">千人千面个性化推荐系统</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -268,887 +383,73 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-2017/12/2017-ziroom-king-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/2017-ziroom-king-5.html">王者编程大赛之五 — 最短路径</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/2017-ziroom-king-5.html" class="archive-article-date">
-  	<time datetime="2017-12-06T23:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-07</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自如年底就会拥有 50W 间房子，大家知道每间房房子都是需要配置完才能出租给自如客的，整个房租的配置过程是很复杂的，每天都需要大量的物流师傅将家电、家具等物品从仓库送到需要配置的每个房间。</p>
-<p><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-5/40beff35-47fc-4427-8805-e183233b598b.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/2017-ziroom-king-5.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%AD%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">支持的语义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.</span> <span class="toc-text">逻辑与算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">流程控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%AF%AD%E4%B9%89"><span class="toc-number">1.3.</span> <span class="toc-text">高级语义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E8%AF%AD%E6%B3%95%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">规则语法的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99%E8%AF%AD%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">定义规则语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E8%A7%A3%E6%9E%90%E5%99%A8%E8%AF%AD%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">编写解析器语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E5%99%A8%E7%94%9F%E6%88%90%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="toc-number">2.3.</span> <span class="toc-text">解析器生成语法树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E8%AF%AD%E6%B3%95%E6%A0%91%E7%94%9F%E6%88%90%E8%AF%AD%E5%8F%A5%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">遍历语法树生成语句表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E8%AF%AD%E6%B3%95%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">规则语法的执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1%E6%B3%A8%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">支持自定义对象注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5"><span class="toc-number">5.</span> <span class="toc-text">支持自定义方法注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C"><span class="toc-number">6.</span> <span class="toc-text">支持并发执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">7.</span> <span class="toc-text">使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%A3%8E%E6%8E%A7"><span class="toc-number">7.1.</span> <span class="toc-text">业务风控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%90%A5%E6%B4%BB%E5%8A%A8"><span class="toc-number">7.2.</span> <span class="toc-text">运营活动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91"><span class="toc-number">7.3.</span> <span class="toc-text">内容分发</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
-        
         
     </div>
 </aside>
 
 
-
-
+  
+  <div id="disqus_thread"></div>
+<link rel="stylesheet" href="/disqus/disqusjs.css">
+<style>
+#disqus_thread #dsqjs footer{text-align:center}
+#disqus_thread #dsqjs #dsqjs-msg{display:none}
+#disqus_recommendations{padding:0 36px}
+@media screen and (max-width:800px) {
+  #disqus_recommendations{padding:0 10px}
+}
+</style>
+<script src="/disqus/disqus.js"></script>
+<script>
+  (function () {
+    var dsqjs = new DisqusJS({
+      shortname: 'fanhaobai',
+      siteName: '樊浩柏科学院',
+      identifier: '2024/04/design-rule-engine.html',
+      url: 'https://www.fanhaobai.com/2024/04/design-rule-engine.html',
+      title: '如何实现一个自定义规则引擎',
+      api: '//disqus.skk.moe/disqus/',
+      apikey: 'TDw3KIqtFyEWY5QclXNR4eLUGbf1ukM3nVozef2YpcfQGDMmRIibPMo32Em76VNB',
+      admin: 'fanhaobai',
+    });
+  })();
+</script>
 
   
-    <article id="post-2017/12/2017-ziroom-king-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/2017-ziroom-king-4.html">王者编程大赛之四 — 约瑟夫环</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/2017-ziroom-king-4.html" class="archive-article-date">
-  	<time datetime="2017-12-06T13:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每年夏季自如都会组织夏季夏令营活动，给来京参加夏令营的小朋友准备好多礼物，今年也是如此。</p>
-<p><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-4/3d9cf2e7-dfe6-4b6e-8526-991296c3ea51.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/2017-ziroom-king-4.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
 
   
-    <article id="post-2017/12/2017-ziroom-king-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/2017-ziroom-king-3.html">王者编程大赛之三 — 01背包</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/2017-ziroom-king-3.html" class="archive-article-date">
-  	<time datetime="2017-12-05T23:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>服务目前每月会对搬家师傅进行评级，根据师傅的评级排名结果，我们将优先保证最优师傅的全天订单。</p>
-<p><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-3/9f4a2cb2-ab32-4b28-b054-b479c04270e5.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/2017-ziroom-king-3.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
 
   
-    <article id="post-2017/12/2017-ziroom-king-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/2017-ziroom-king-2.html">王者编程大赛之二 — 蓄水池</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/2017-ziroom-king-2.html" class="archive-article-date">
-  	<time datetime="2017-12-05T22:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自如寓打算门口用砖头围立一个蓄水池子，从上面看凹凸不平，凹的地方会有积水。那如果用数字代表每个砖头的高度，就形成一个二维数据（如示例），请问这个池子能存储多少单位的水？<br><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-2/53afcc7a-ff51-4191-aab0-5c9cc6850566.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/2017-ziroom-king-2.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
 
   
-    <article id="post-2017/12/2017-ziroom-king-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/2017-ziroom-king-1.html">王者编程大赛之一</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/12/2017-ziroom-king-1.html" class="archive-article-date">
-  	<time datetime="2017-12-05T05:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本次王者编程大赛分为 3 个组别，分别为研发、测试、移动战场。这里只讨论研发战场所考的 <a target="_blank" rel="noopener" href="https://github.com/fan-haobai/2017-ziroom-king">题目</a>，本次大赛共有 7 道题，主要考查点为基础算法，解题所用语言不做限制，但是需要在 <a target="_blank" rel="noopener" href="http://www.anycodes.cn/zh/">在线验证平台</a> 使用标准输入并验证通过，最后成绩以正确性和答题时间为评定依据。<br><img src="//www.fanhaobai.com/2017/12/2017-ziroom-king-1/f9829b13-af2e-4c7b-b214-40bc78223c18.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/12/2017-ziroom-king-1.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
-
-
-  
-    <article id="post-2017/11/synchronised-asynchronized-coroutine" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/11/synchronised-asynchronized-coroutine.html">异步、并发、协程原理</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/11/synchronised-asynchronized-coroutine.html" class="archive-article-date">
-  	<time datetime="2017-11-13T10:45:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>原文：<a target="_blank" rel="noopener" href="http://wiki.phpboy.net/doku.php?id=2017-07:55-%E5%BC%82%E6%AD%A5_%E5%B9%B6%E5%8F%91_%E5%8D%8F%E7%A8%8B%E5%8E%9F%E7%90%86.md">http://wiki.phpboy.net/doku.php?id=2017-07:55-异步_并发_协程原理.md</a></p>
-</blockquote>
-<p>Linux 操作系统在设计上将虚拟空间划分为用户空间和内核空间，两者做了隔离是相互独立的，用户空间给应用程序使用，内核空间给内核使用。<br><img src="//www.fanhaobai.com/2017/11/synchronised-asynchronized-coroutine/a89c6e5b-facd-47a1-a26b-c8fb747e9650.jpg">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统原理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/系统原理/" class="article-tag-list-link color5">系统原理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/11/synchronised-asynchronized-coroutine.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-2017/11/qconf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/11/qconf.html">分布式配置管理Qconf</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/11/qconf.html" class="archive-article-date">
-  	<time datetime="2017-11-03T17:32:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-04</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>原文：<a target="_blank" rel="noopener" href="http://catkang.github.io/2015/06/23/qconf.html">从配置文件到分布式配置管理QConf</a></p>
-</blockquote>
-<p>QConf 是奇虎 360 广泛使用的配置管理服务，现已开源 <a target="_blank" rel="noopener" href="https://github.com/Qihoo360/QConf">QConf Source Code</a>，欢迎大家关注使用。本文从设计初衷，架构实现，使用情况及相关产品比较四个方面进行介绍。</p>
-<p><img src="//www.fanhaobai.com/2017/11/qconf/d7fec4ae-e55a-11e7-80c1-9a214cf093ae.jpg">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/11/qconf.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-2017/09/supervisor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/09/supervisor.html">使用Supervisor管理进程</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/09/supervisor.html" class="archive-article-date">
-  	<time datetime="2017-09-23T17:56:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-24</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="http://supervisord.org/">Supervisor</a> 是一款使用 Python 开发的非常优秀的进程管理工具。它可以在类 UNIX 系统上让用户精确地监视与控制多组指定数量的服务进程。当监控的服务进程意外退出时，会尝试自动重启这些服务，以保持服务可用状态。</p>
-<p><img src="//www.fanhaobai.com/2017/09/supervisor/d42decd3-2342-4e8f-a34f-48b47fc6e557.png">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/09/supervisor.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-2017/09/lua-in-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/09/lua-in-nginx.html">Lua在Nginx的应用</a>
-    </h1>
-  
-
-        
-        <a href="../../2017/09/lua-in-nginx.html" class="archive-article-date">
-  	<time datetime="2017-09-09T21:25:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-10</time>
-</a>
-        
-      </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>当 Nginx 标准模块和配置不能灵活地适应系统要求时，就可以考虑使用 Lua 扩展和定制 Nginx 服务。<a target="_blank" rel="noopener" href="http://openresty.org/en/">OpenResty</a> 集成了大量精良的 Lua 库、第三方模块，可以方便地搭建能够处理超高并发、扩展性极高的 Web 服务，所以这里选择 OpenResty 提供的 <a target="_blank" rel="noopener" href="https://github.com/openresty/lua-nginx-module">lua-nginx-module</a> 方案。</p>
-<p><img src="//www.fanhaobai.com/2017/09/lua-in-nginx/63113174-45d7-4a27-8472-d037675c2cbd.jpg">
-        
-      
-
-      
-    </div>
-    
-        <div class="article-info article-info-index">
-          <div class="tag-category">
-          
-            <div class="tag-box">
-              
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-              
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/语言/" class="article-tag-list-link color3">语言</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/语言/Lua/" class="article-tag-list-link color4">Lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-            </div>
-          
-            <p class="article-more-link">
-              <a class="article-more-a" href="../../2017/09/lua-in-nginx.html">全文 >></a>
-            </p>
-          
-          </div>
-        </div>
-    
-    
-    <div class="clearfix"></div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="../2/">«</a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/">2</a><span class="page-number current">3</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><a class="extend next" rel="next" href="../4/">»</a>
-    </nav>
-  
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s)
+  })();
+</script>
 
 
           </div>
@@ -1171,8 +472,8 @@
     <script>
 var yiliaConfig = {
     mathjax: true,
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isArchive: false,
     isTag: false,
     isCategory: false,
